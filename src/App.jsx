@@ -85,6 +85,16 @@ function App() {
         pendingSectionRef.current = targetSection;
         closePanel();
 
+        // Temporarily restore desk visibility during transition
+        if (deskRef.current) {
+          gsap.to(deskRef.current, {
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        }
+
         // Wait for close animation + hand movement, then open next panel
         setTimeout(() => {
           if (pendingSectionRef.current) {
@@ -92,6 +102,9 @@ function App() {
             pendingSectionRef.current = null;
           }
           setIsTransitioning(false);
+
+          // Let GSAP ScrollTrigger recalculate desk state
+          ScrollTrigger.refresh();
         }, 600); // Delay for close animation + hands movement
       } else {
         // No panel open, just open the new one directly
