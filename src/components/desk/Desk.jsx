@@ -55,7 +55,7 @@ const positions = {
     // MID ROW (28-42% from bottom) - Clear gap from back row
     notebook: { top: '8%', left: '18%', zIndex: 4, transform: 'rotate(4deg)' },
     pen: { bottom: '38%', left: '50%', zIndex: 2, transform: 'rotate(-32deg)' },
-    envelope: { bottom: '18%', right: '5%', zIndex: 4, transform: 'rotate(7deg)' },
+    envelope: { bottom: '24%', right: '5%', zIndex: 4, transform: 'rotate(7deg)' },
 
     // FRONT ROW (3-15% from bottom) - Clear gap from mid row
     petriDish: { bottom: '6%', left: '5%', zIndex: 1, transform: 'rotate(12deg)' },
@@ -65,7 +65,7 @@ const positions = {
     scatteredPapers: { top: '12%', left: '0%', zIndex: 2 },
 
     // Papers behind envelope (contact)
-    contactPapers: { bottom: '22%', right: '2%', zIndex: 3 },
+    contactPapers: { bottom: '28%', right: '2%', zIndex: 3 },
 
     // Papers behind test tubes
     labPapers: { bottom: '8%', left: '65%', zIndex: 3 },
