@@ -106,8 +106,73 @@ const Microscope = forwardRef(({ onClick, className = '', style = {} }, ref) => 
         <circle cx="65" cy="75" r="6" fill="#5c4a3d" stroke="#1a1815" strokeWidth="1.5" />
         <circle cx="65" cy="90" r="5" fill="#5c4a3d" stroke="#1a1815" strokeWidth="1.5" />
 
-        {/* Light source indicator */}
-        <circle cx="45" cy="100" r="3" fill="#33ff33" opacity="0.8" />
+        {/* Light source indicator with pulse rings */}
+        <g className="microscope-light">
+          {/* Outer pulse rings */}
+          <circle cx="45" cy="100" r="3" fill="none" stroke="#33ff33" strokeWidth="0.5" opacity="0">
+            <animate
+              attributeName="r"
+              values="3;12"
+              dur="2s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.6;0"
+              dur="2s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle cx="45" cy="100" r="3" fill="none" stroke="#33ff33" strokeWidth="0.5" opacity="0">
+            <animate
+              attributeName="r"
+              values="3;12"
+              dur="2s"
+              begin="0.7s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.6;0"
+              dur="2s"
+              begin="0.7s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle cx="45" cy="100" r="3" fill="none" stroke="#33ff33" strokeWidth="0.5" opacity="0">
+            <animate
+              attributeName="r"
+              values="3;12"
+              dur="2s"
+              begin="1.4s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.6;0"
+              dur="2s"
+              begin="1.4s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          {/* Core light with glow */}
+          <circle cx="45" cy="100" r="4" fill="#33ff33" opacity="0.3">
+            <animate
+              attributeName="r"
+              values="4;5;4"
+              dur="1.5s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle cx="45" cy="100" r="3" fill="#33ff33" opacity="0.9">
+            <animate
+              attributeName="opacity"
+              values="0.9;0.6;0.9"
+              dur="1.5s"
+              repeatCount="indefinite"
+            />
+          </circle>
+        </g>
       </svg>
     </div>
   );
