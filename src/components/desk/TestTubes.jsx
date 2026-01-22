@@ -17,6 +17,19 @@ const TestTubes = forwardRef(({ className = '', style = {} }, ref) => {
         xmlns="http://www.w3.org/2000/svg"
         style={{ width: '100%', height: '100%' }}
       >
+        {/* Clip paths for bubbles to stay inside tubes */}
+        <defs>
+          <clipPath id="tube1Clip">
+            <rect x="16" y="30" width="8" height="33" rx="4" />
+          </clipPath>
+          <clipPath id="tube2Clip">
+            <rect x="36" y="22" width="8" height="41" rx="4" />
+          </clipPath>
+          <clipPath id="tube3Clip">
+            <rect x="56" y="38" width="8" height="25" rx="4" />
+          </clipPath>
+        </defs>
+
         {/* Wooden rack - back panel */}
         <rect
           x="8"
@@ -70,6 +83,21 @@ const TestTubes = forwardRef(({ className = '', style = {} }, ref) => {
           fill="#002fa7"
           opacity="0.7"
         />
+        {/* Bubbles for tube 1 */}
+        <g clipPath="url(#tube1Clip)">
+          <circle cx="19" cy="58" r="1.5" fill="white" opacity="0.6">
+            <animate attributeName="cy" values="58;32;32" dur="2.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.6;0.6;0" dur="2.5s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="21" cy="55" r="1" fill="white" opacity="0.5">
+            <animate attributeName="cy" values="55;35;35" dur="3s" repeatCount="indefinite" begin="0.8s" />
+            <animate attributeName="opacity" values="0.5;0.5;0" dur="3s" repeatCount="indefinite" begin="0.8s" />
+          </circle>
+          <circle cx="18" cy="52" r="0.8" fill="white" opacity="0.4">
+            <animate attributeName="cy" values="52;33;33" dur="2.8s" repeatCount="indefinite" begin="1.5s" />
+            <animate attributeName="opacity" values="0.4;0.4;0" dur="2.8s" repeatCount="indefinite" begin="1.5s" />
+          </circle>
+        </g>
         <ellipse cx="20" cy="15" rx="5" ry="2" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1" />
         <rect x="18" y="12" width="4" height="5" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1" />
 
@@ -93,6 +121,25 @@ const TestTubes = forwardRef(({ className = '', style = {} }, ref) => {
           fill="#33ff33"
           opacity="0.6"
         />
+        {/* Bubbles for tube 2 */}
+        <g clipPath="url(#tube2Clip)">
+          <circle cx="40" cy="60" r="1.2" fill="white" opacity="0.5">
+            <animate attributeName="cy" values="60;25;25" dur="3.2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.5;0.5;0" dur="3.2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="38" cy="55" r="1.5" fill="white" opacity="0.6">
+            <animate attributeName="cy" values="55;28;28" dur="2.8s" repeatCount="indefinite" begin="1s" />
+            <animate attributeName="opacity" values="0.6;0.6;0" dur="2.8s" repeatCount="indefinite" begin="1s" />
+          </circle>
+          <circle cx="41" cy="50" r="0.9" fill="white" opacity="0.4">
+            <animate attributeName="cy" values="50;24;24" dur="3.5s" repeatCount="indefinite" begin="0.5s" />
+            <animate attributeName="opacity" values="0.4;0.4;0" dur="3.5s" repeatCount="indefinite" begin="0.5s" />
+          </circle>
+          <circle cx="39" cy="45" r="1.1" fill="white" opacity="0.5">
+            <animate attributeName="cy" values="58;26;26" dur="2.6s" repeatCount="indefinite" begin="1.8s" />
+            <animate attributeName="opacity" values="0.5;0.5;0" dur="2.6s" repeatCount="indefinite" begin="1.8s" />
+          </circle>
+        </g>
         <ellipse cx="40" cy="10" rx="5" ry="2" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1" />
         <rect x="38" y="7" width="4" height="5" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1" />
 
@@ -116,6 +163,21 @@ const TestTubes = forwardRef(({ className = '', style = {} }, ref) => {
           fill="#c23b22"
           opacity="0.7"
         />
+        {/* Bubbles for tube 3 */}
+        <g clipPath="url(#tube3Clip)">
+          <circle cx="60" cy="58" r="1.3" fill="white" opacity="0.5">
+            <animate attributeName="cy" values="58;40;40" dur="2.2s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.5;0.5;0" dur="2.2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="58" cy="55" r="0.9" fill="white" opacity="0.4">
+            <animate attributeName="cy" values="55;42;42" dur="2.8s" repeatCount="indefinite" begin="0.6s" />
+            <animate attributeName="opacity" values="0.4;0.4;0" dur="2.8s" repeatCount="indefinite" begin="0.6s" />
+          </circle>
+          <circle cx="61" cy="52" r="1.1" fill="white" opacity="0.5">
+            <animate attributeName="cy" values="60;41;41" dur="3s" repeatCount="indefinite" begin="1.2s" />
+            <animate attributeName="opacity" values="0.5;0.5;0" dur="3s" repeatCount="indefinite" begin="1.2s" />
+          </circle>
+        </g>
         <ellipse cx="60" cy="20" rx="5" ry="2" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1" />
         <rect x="58" y="17" width="4" height="5" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1" />
 
