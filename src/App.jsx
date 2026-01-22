@@ -145,7 +145,6 @@ function App() {
           terminalActive={terminalActive}
           isMobile={isMobile}
           isTablet={isTablet}
-          activePanel={activePanel}
         />
 
         <ScrollIndicator ref={scrollIndicatorRef} />
