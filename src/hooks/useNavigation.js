@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-const SECTIONS = ['hero', 'pi', 'research', 'publications', 'team', 'news', 'contact'];
+const SECTIONS = ['hero', 'pi', 'research', 'assistant', 'publications', 'team', 'news', 'contact'];
 
 export function useNavigation() {
   const [activeSection, setActiveSection] = useState('hero');

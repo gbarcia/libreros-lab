@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-const SECTIONS = ['pi', 'research', 'publications', 'team', 'news', 'contact'];
+const SECTIONS = ['pi', 'research', 'assistant', 'publications', 'team', 'news', 'contact'];
 
 /**
  * Hook for carousel-style navigation through sections (mobile only)
