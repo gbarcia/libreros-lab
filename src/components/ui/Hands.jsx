@@ -95,21 +95,21 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
         <svg
           ref={leftHandRef}
           className="hand-svg hand-clickable"
-          viewBox="0 0 100 130"
+          viewBox="0 0 130 130"
           xmlns="http://www.w3.org/2000/svg"
           onClick={toggleGloves}
           style={{ cursor: 'pointer' }}
         >
           {/* Thumb - drawn first so hand covers inner edge */}
           <ellipse
-            cx="92"
-            cy="65"
-            rx="16"
-            ry="10"
+            cx="105"
+            cy="60"
+            rx="22"
+            ry="14"
             fill={handFill}
             stroke="#1a1815"
             strokeWidth="2.5"
-            transform="rotate(-20 92 65)"
+            transform="rotate(-30 105 60)"
           />
 
           {/* Main hand - oval shape (covers thumb inner edge) */}
@@ -148,21 +148,21 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
         <svg
           ref={rightHandRef}
           className="hand-svg hand-clickable"
-          viewBox="0 0 100 130"
+          viewBox="-30 0 130 130"
           xmlns="http://www.w3.org/2000/svg"
           onClick={toggleGloves}
           style={{ cursor: 'pointer' }}
         >
           {/* Thumb - drawn first so hand covers inner edge (mirrored) */}
           <ellipse
-            cx="8"
-            cy="65"
-            rx="16"
-            ry="10"
+            cx="-5"
+            cy="60"
+            rx="22"
+            ry="14"
             fill={handFill}
             stroke="#1a1815"
             strokeWidth="2.5"
-            transform="rotate(20 8 65)"
+            transform="rotate(30 -5 60)"
           />
 
           {/* Main hand - oval shape (covers thumb inner edge) */}
