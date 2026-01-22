@@ -22,6 +22,28 @@
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
+/* Attention pulse when radio is off */
+.radio-attention {
+    animation: attentionPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes attentionPulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 2px 4px rgba(72, 209, 204, 0.3));
+    }
+    50% {
+        transform: scale(1.03);
+        filter: drop-shadow(0 4px 12px rgba(72, 209, 204, 0.5));
+    }
+}
+
+.radio-attention:hover {
+    animation: none;
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
 .radio-svg {
     width: 100%;
     height: auto;

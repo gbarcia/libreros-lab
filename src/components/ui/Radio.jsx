@@ -107,7 +107,7 @@ const Radio = () => {
       />
 
       {/* Radio SVG */}
-      <div className="radio" onClick={handleRadioClick}>
+      <div className={`radio ${!isPlaying ? 'radio-attention' : ''}`} onClick={handleRadioClick}>
         <svg
           viewBox="0 0 120 80"
           xmlns="http://www.w3.org/2000/svg"
