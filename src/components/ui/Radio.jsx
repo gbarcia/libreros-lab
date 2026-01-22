@@ -318,6 +318,16 @@ const Radio = () => {
             ))}
           </div>
 
+          <div className="radio-popup-controls">
+            <button
+              className={`radio-power-btn ${isPlaying ? 'on' : ''}`}
+              onClick={togglePlay}
+            >
+              <span className="radio-power-icon">⏻</span>
+              <span className="radio-power-label">{isPlaying ? 'ON' : 'OFF'}</span>
+            </button>
+          </div>
+
           <div className="radio-popup-volume">
             <span className="radio-volume-label">VOLUME</span>
             <input
@@ -329,10 +339,6 @@ const Radio = () => {
               onChange={handleVolumeChange}
               className="radio-volume-slider"
             />
-          </div>
-
-          <div className="radio-popup-hint">
-            Click knob to {isPlaying ? 'pause' : 'play'}
           </div>
         </div>
       )}

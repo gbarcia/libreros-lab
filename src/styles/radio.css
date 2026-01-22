@@ -256,12 +256,51 @@
     cursor: pointer;
 }
 
-.radio-popup-hint {
-    margin-top: 10px;
-    font-size: 0.5rem;
+/* Power button controls */
+.radio-popup-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.radio-power-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--paper-aged, #e8e0cc);
+    border: 2px solid var(--ink-black, #1a1815);
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
     color: var(--ink-faded, #3d3a35);
-    text-align: center;
-    font-style: italic;
+    transition: all 0.2s ease;
+}
+
+.radio-power-btn:hover {
+    background: var(--paper-cream, #f7f3e9);
+    transform: scale(1.02);
+}
+
+.radio-power-btn.on {
+    background: #48D1CC;
+    color: var(--ink-black, #1a1815);
+    border-color: #3BB8B3;
+}
+
+.radio-power-btn.on:hover {
+    background: #5DE0DB;
+}
+
+.radio-power-icon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.radio-power-label {
+    letter-spacing: 1px;
 }
 
 /* Responsive */
