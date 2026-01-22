@@ -31,9 +31,12 @@ const Terminal = forwardRef(({ onClick, isActive = false, className = '', style 
             charIndex++;
             setTimeout(typeNextChar, 40);
           } else {
-            currentText += '\n';
             lineIndex++;
             charIndex = 0;
+            // Only add newline if there's another line to type
+            if (lineIndex < bootSequence.length) {
+              currentText += '\n';
+            }
             setTimeout(typeNextChar, 150);
           }
         } else {
