@@ -90,7 +90,7 @@ const CoffeeCup = forwardRef(({ className = '', style = {} }, ref) => {
         {/* Cup body */}
         <path
           d="M 8 22 L 12 70 Q 14 75, 30 75 Q 46 75, 48 70 L 52 22 Z"
-          fill="#f7f3e9"
+          fill="#ffffff"
           stroke="#1a1815"
           strokeWidth="2.5"
         />
@@ -112,7 +112,7 @@ const CoffeeCup = forwardRef(({ className = '', style = {} }, ref) => {
           cy="22"
           rx="22"
           ry="5"
-          fill="#f7f3e9"
+          fill="#ffffff"
           stroke="#1a1815"
           strokeWidth="2"
         />
@@ -128,7 +128,7 @@ const CoffeeCup = forwardRef(({ className = '', style = {} }, ref) => {
         <path
           d="M 52 32 Q 59 34, 59 45 Q 59 56, 52 58"
           fill="none"
-          stroke="#f7f3e9"
+          stroke="#ffffff"
           strokeWidth="2"
           strokeLinecap="round"
         />
