@@ -43,7 +43,14 @@ const Flask = forwardRef(({ onClick, className = '', style = {} }, ref) => {
           d="M 18 75 L 15 90 Q 15 98 22 102 L 58 102 Q 65 98 65 90 L 62 75 Z"
           fill="#4a6fa5"
           opacity="0.6"
+          className="flask-liquid"
         />
+
+        {/* Bubbles */}
+        <circle cx="30" cy="88" r="2.5" fill="#6b8fc4" opacity="0.7" className="bubble bubble-1" />
+        <circle cx="45" cy="92" r="2" fill="#6b8fc4" opacity="0.6" className="bubble bubble-2" />
+        <circle cx="52" cy="85" r="1.5" fill="#6b8fc4" opacity="0.5" className="bubble bubble-3" />
+        <circle cx="38" cy="95" r="1.8" fill="#6b8fc4" opacity="0.6" className="bubble bubble-4" />
 
         {/* Measurement lines */}
         <line x1="15" y1="85" x2="25" y2="85" stroke="#1a1815" strokeWidth="1" />

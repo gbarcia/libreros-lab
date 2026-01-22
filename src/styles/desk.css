@@ -498,3 +498,83 @@
         filter: blur(2px);
     }
 }
+
+/* Flask Fun Animation */
+.flask {
+    animation: flaskBubble 4s ease-in-out infinite;
+}
+
+@keyframes flaskBubble {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(-3deg) translateY(-3px);
+    }
+}
+
+.flask:hover {
+    animation: flaskSwirl 0.8s ease-in-out infinite;
+    filter: drop-shadow(0 6px 15px rgba(74, 111, 165, 0.5));
+}
+
+@keyframes flaskSwirl {
+    0%, 100% {
+        transform: rotate(-8deg) scale(1.1);
+    }
+    25% {
+        transform: rotate(-2deg) scale(1.1);
+    }
+    50% {
+        transform: rotate(-6deg) scale(1.1);
+    }
+    75% {
+        transform: rotate(-4deg) scale(1.1);
+    }
+}
+
+/* Liquid bubbling effect */
+.flask svg path:nth-of-type(2) {
+    animation: liquidWave 3s ease-in-out infinite;
+}
+
+@keyframes liquidWave {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.75;
+    }
+}
+
+/* Bubbles rising animation */
+.flask .bubble {
+    animation: bubbleRise 2.5s ease-in-out infinite;
+}
+
+.flask .bubble-1 {
+    animation-delay: 0s;
+}
+
+.flask .bubble-2 {
+    animation-delay: 0.6s;
+}
+
+.flask .bubble-3 {
+    animation-delay: 1.2s;
+}
+
+.flask .bubble-4 {
+    animation-delay: 1.8s;
+}
+
+@keyframes bubbleRise {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-8px);
+        opacity: 0.9;
+    }
+}
