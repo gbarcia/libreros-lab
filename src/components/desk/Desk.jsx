@@ -10,6 +10,7 @@ import Envelope from './Envelope';
 import TestTubes from './TestTubes';
 import Pipette from './Pipette';
 import PetriDish from './PetriDish';
+import ScatteredPapers from './ScatteredPapers';
 import Hands from '../ui/Hands';
 
 /*
@@ -55,7 +56,10 @@ const positions = {
 
     // FRONT ROW (3-15% from bottom) - Clear gap from mid row
     petriDish: { bottom: '6%', left: '5%', zIndex: 1, transform: 'rotate(12deg)' },
-    coffeeCup: { bottom: '5%', left: '68%', zIndex: 4 }
+    coffeeCup: { bottom: '5%', left: '68%', zIndex: 4 },
+
+    // Scattered papers beneath folder and notebook
+    scatteredPapers: { top: '12%', left: '0%', zIndex: 2 }
   },
 
   tablet: {
@@ -110,6 +114,11 @@ const Desk = forwardRef(({
 
   return (
     <div ref={ref} className={`desk ${className}`}>
+      {/* Scattered papers - behind folder and notebook */}
+      {shouldRender('scatteredPapers') && (
+        <ScatteredPapers style={getPos('scatteredPapers')} />
+      )}
+
       {/* TOP ROW */}
       <Folder
         onClick={(e) => handleItemClick('pi', e)}
