@@ -76,9 +76,9 @@
         opacity: 0.7;
     }
 
-    /* Show coffee cup, microscope and terminal on mobile */
+    /* Show coffee cup, test tubes and terminal on mobile */
     .coffee-cup,
-    .microscope,
+    .test-tubes,
     .terminal {
         display: block !important;
         pointer-events: none;
@@ -91,12 +91,11 @@
         top: 25% !important;
     }
 
-    /* Position microscope on mobile */
-    .microscope {
+    /* Position test tubes on mobile */
+    .test-tubes {
         width: 45px !important;
         left: 45% !important;
         top: 22% !important;
-        animation: none !important;
     }
 
     /* Position terminal on mobile */
