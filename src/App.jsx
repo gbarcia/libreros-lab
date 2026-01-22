@@ -35,7 +35,7 @@ function App() {
   const { activePanel, navigateTo, closePanel } = useNavigation();
 
   const [progress, setProgress] = useState(0);
-  const [terminalActive, setTerminalActive] = useState(false);
+  const [terminalActive, setTerminalActive] = useState(true);
 
   // Refs
   const mastheadRef = useRef(null);
