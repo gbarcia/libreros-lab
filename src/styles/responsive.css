@@ -66,14 +66,9 @@
         display: none !important;
     }
 
-    /* Hands visible on mobile (static, decorative) */
+    /* Hide hands on mobile */
     .hands-container {
-        display: flex;
-        bottom: 45%;
-    }
-
-    .hand-svg {
-        width: clamp(80px, 20vw, 120px);
+        display: none !important;
     }
 
     /* Content panels full width on mobile */
