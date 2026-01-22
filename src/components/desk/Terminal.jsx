@@ -49,10 +49,17 @@ const Terminal = forwardRef(({ onClick, isActive = false, className = '', style 
     <div ref={ref} className={`terminal desk-item clickable ${className}`} onClick={onClick} style={style}>
       <div className="terminal-bezel">
         <div className="terminal-screen">
-          {displayText.split('\n').map((line, i) => (
+          {displayText.split('\n').map((line, i, arr) => (
             <span key={i}>
-              {line}
-              {i < displayText.split('\n').length - 1 && <br />}
+              {i === arr.length - 1 && line.endsWith('_') ? (
+                <>
+                  {line.slice(0, -1)}
+                  <span className="terminal-cursor">_</span>
+                </>
+              ) : (
+                line
+              )}
+              {i < arr.length - 1 && <br />}
             </span>
           ))}
         </div>

@@ -383,6 +383,20 @@
     box-shadow: 0 0 10px var(--green-terminal);
 }
 
+/* Terminal blinking cursor */
+.terminal-cursor {
+    animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
 /* Notebook */
 .notebook {
     width: clamp(120px, 12vw, 180px);
