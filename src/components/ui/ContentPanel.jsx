@@ -6,7 +6,6 @@ const ContentPanel = forwardRef(({
   title,
   stamp,
   children,
-  isManual = false,
   className = ''
 }, ref) => {
 
@@ -21,18 +20,6 @@ const ContentPanel = forwardRef(({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isActive, onClose]);
-
-  // Prevent body scroll only when panel is opened manually (not by scroll)
-  useEffect(() => {
-    if (isActive && isManual) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isActive, isManual]);
 
   return (
     <div

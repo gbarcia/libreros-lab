@@ -388,55 +388,6 @@
     z-index: -1;
 }
 
-/* Scroll Indicator */
-.scroll-indicator {
-    position: fixed;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 50;
-}
-
-.scroll-indicator p {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: clamp(0.55rem, 1.2vw, 0.7rem);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--ink-faded);
-    margin-bottom: 8px;
-}
-
-.scroll-arrow {
-    width: 16px;
-    height: 16px;
-    border-right: 2px solid var(--ink-black);
-    border-bottom: 2px solid var(--ink-black);
-    transform: rotate(45deg);
-    margin: 0 auto;
-    animation: bounce 2s infinite;
-}
-
-/* Narrative Section Labels */
-.narrative-section {
-    position: fixed;
-    left: 15px;
-    bottom: 100px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: clamp(0.55rem, 1.2vw, 0.7rem);
-    color: var(--ink-faded);
-    opacity: 0;
-    transition: opacity 0.5s;
-    z-index: 50;
-    background: var(--paper-cream);
-    padding: 8px 12px;
-    border-left: 3px solid var(--blue-klein);
-}
-
-.narrative-section.visible {
-    opacity: 1;
-}
-
 /* Petri Dish Animation */
 .petri-animate {
     animation: petriPulse 4s ease-in-out infinite;

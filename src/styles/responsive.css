@@ -151,10 +151,6 @@
         transition-duration: 0.01ms !important;
     }
 
-    .scroll-arrow {
-        animation: none;
-    }
-
     .coffee-steam {
         animation: none;
     }
@@ -163,10 +159,7 @@
 /* Print styles */
 @media print {
     .paper-texture,
-    .progress-bar,
-    .scroll-indicator,
-    .hands-container,
-    .narrative-section {
+    .hands-container {
         display: none !important;
     }
 

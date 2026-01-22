@@ -36,7 +36,7 @@ body {
     background: var(--paper-cream);
     font-family: 'Crimson Pro', Georgia, serif;
     color: var(--ink-black);
-    overflow-x: hidden;
+    overflow: hidden;
     cursor: default;
 }
 
@@ -57,18 +57,6 @@ body {
     -webkit-backface-visibility: hidden;
 }
 
-/* Progress Bar */
-.progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: var(--blue-klein);
-    width: 0%;
-    z-index: 1001;
-    transition: width 0.1s ease-out;
-}
-
 /* Scene Container */
 .scene-container {
     position: fixed;
@@ -79,13 +67,6 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-}
-
-/* Scroll Spacer for GSAP ScrollTrigger */
-.scroll-spacer {
-    height: 600vh;
-    position: relative;
-    z-index: -1;
 }
 
 /* Typography */
