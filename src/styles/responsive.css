@@ -36,83 +36,26 @@
         font-size: 1.5rem;
     }
 
-    /* Desk fills space below masthead */
+    /* Desk starts at the top */
     .desk {
-        height: 75vh;
-        top: 18%;
+        height: 100vh;
+        top: 0;
         bottom: auto;
     }
 
-    /* ALL desk items visible as decorative background */
-    /* Scaled down sizes for mobile viewport */
-    .folder {
-        width: clamp(50px, 14vw, 70px);
-        height: clamp(63px, 17vw, 88px);
-    }
-
-    .terminal {
-        width: clamp(70px, 22vw, 100px);
-        height: clamp(58px, 18vw, 85px);
-    }
-
-    .notebook {
-        width: clamp(45px, 12vw, 60px);
-        height: clamp(56px, 15vw, 75px);
-    }
-
-    .microscope {
-        width: clamp(35px, 10vw, 50px);
-        height: clamp(47px, 13vw, 65px);
-    }
-
-    .flask {
-        width: clamp(28px, 8vw, 40px);
-        height: clamp(40px, 11vw, 55px);
-    }
-
-    .envelope {
-        width: clamp(40px, 11vw, 55px);
-        height: clamp(28px, 8vw, 38px);
-    }
-
-    .coffee-cup {
-        width: clamp(30px, 8vw, 42px);
-    }
-
-    .pen {
-        width: clamp(50px, 14vw, 70px);
-    }
-
-    .test-tubes {
-        width: clamp(35px, 9vw, 48px);
-    }
-
-    .pipette {
-        width: clamp(45px, 12vw, 60px);
-    }
-
-    .petri-dish {
-        width: clamp(35px, 9vw, 48px);
+    /* Hide ALL desk items - only show table, mat and hands */
+    .desk-item {
+        display: none !important;
     }
 
     /* Hands visible on mobile (static, decorative) */
     .hands-container {
         display: flex;
-        bottom: 5%;
+        bottom: 45%;
     }
 
     .hand-svg {
-        width: clamp(60px, 16vw, 90px);
-    }
-
-    /* Desk items are decorative only - no clicks */
-    .desk-item.clickable {
-        pointer-events: none;
-        cursor: default;
-    }
-
-    .desk-item.clickable:hover {
-        transform: none;
+        width: clamp(80px, 20vw, 120px);
     }
 
     /* Content panels full width on mobile */

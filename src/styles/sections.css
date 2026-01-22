@@ -327,7 +327,7 @@
    ============================================ */
 
 @media (max-width: 767px) {
-    /* Panel as drawer from bottom with transparency */
+    /* Panel as drawer from bottom */
     .content-panel.mobile {
         top: auto !important;
         bottom: 0 !important;
@@ -343,10 +343,8 @@
         padding: 20px 20px 0 20px !important;
         display: flex;
         flex-direction: column;
-        /* Semi-transparent background to see desk behind */
-        background: rgba(247, 243, 233, 0.85) !important;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        /* Solid white background */
+        background: #ffffff !important;
     }
 
     .content-panel.mobile.active {
@@ -366,8 +364,8 @@
         justify-content: space-between;
         align-items: center;
         padding: 15px 10px;
-        border-top: 1px solid rgba(232, 224, 204, 0.5);
-        background: rgba(247, 243, 233, 0.9);
+        border-top: 1px solid #e0e0e0;
+        background: #ffffff;
         margin: 0 -20px;
         padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px));
     }
