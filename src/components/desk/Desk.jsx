@@ -50,7 +50,7 @@ const positions = {
     flask: { bottom: '38%', left: '3%', zIndex: 6, transform: 'rotate(-5deg)' },
     testTubes: { bottom: '5%', left: '68%', zIndex: 4, transform: 'rotate(3deg)' },
     pipette: { bottom: '40%', left: '58%', zIndex: 2, transform: 'rotate(-18deg)' },
-    microscope: { bottom: '0%', left: '18%', zIndex: 3 },
+    microscope: { bottom: '0%', left: '10%', zIndex: 3 },
 
     // MID ROW (28-42% from bottom) - Clear gap from back row
     notebook: { top: '8%', left: '18%', zIndex: 4, transform: 'rotate(4deg)' },
@@ -71,7 +71,7 @@ const positions = {
     labPapers: { bottom: '8%', left: '65%', zIndex: 3 },
 
     // Papers behind microscope
-    microscopePapers: { bottom: '5%', left: '15%', zIndex: 2 }
+    microscopePapers: { bottom: '5%', left: '7%', zIndex: 2 }
   },
 
   tablet: {
