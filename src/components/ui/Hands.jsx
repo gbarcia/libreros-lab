@@ -20,13 +20,18 @@ const Hands = forwardRef(({ className = '' }, ref) => {
           strokeWidth="2.5"
         />
 
-        {/* Thumb - small oval */}
+        {/* Thumb - small oval (fill only) */}
         <ellipse
           cx="88"
           cy="70"
           rx="12"
           ry="18"
           fill="#e8c9a8"
+        />
+        {/* Thumb outer border only (right half) */}
+        <path
+          d="M 88 52 A 12 18 0 0 1 88 88"
+          fill="none"
           stroke="#1a1815"
           strokeWidth="2.5"
         />
@@ -57,13 +62,18 @@ const Hands = forwardRef(({ className = '' }, ref) => {
           strokeWidth="2.5"
         />
 
-        {/* Thumb - small oval (mirrored) */}
+        {/* Thumb - small oval (mirrored, fill only) */}
         <ellipse
           cx="12"
           cy="70"
           rx="12"
           ry="18"
           fill="#e8c9a8"
+        />
+        {/* Thumb outer border only (left half) */}
+        <path
+          d="M 12 52 A 12 18 0 0 0 12 88"
+          fill="none"
           stroke="#1a1815"
           strokeWidth="2.5"
         />
