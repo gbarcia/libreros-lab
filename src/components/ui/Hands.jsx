@@ -95,7 +95,7 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
         <svg
           ref={leftHandRef}
           className="hand-svg hand-clickable"
-          viewBox="0 0 115 130"
+          viewBox="0 0 115 195"
           xmlns="http://www.w3.org/2000/svg"
           onClick={toggleGloves}
           style={{ cursor: 'pointer' }}
@@ -132,7 +132,7 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
           />
 
           {/* Shirt cuff - drawn last to appear on top */}
-          <rect x="15" y="100" width="70" height="30" rx="3" fill="#fff" stroke="#1a1815" strokeWidth="2.5"/>
+          <rect x="15" y="100" width="70" height="90" rx="3" fill="#fff" stroke="#1a1815" strokeWidth="2.5"/>
         </svg>
       </div>
 
@@ -147,7 +147,7 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
         <svg
           ref={rightHandRef}
           className="hand-svg hand-clickable"
-          viewBox="-15 0 115 130"
+          viewBox="-15 0 115 195"
           xmlns="http://www.w3.org/2000/svg"
           onClick={toggleGloves}
           style={{ cursor: 'pointer' }}
@@ -184,7 +184,7 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
           />
 
           {/* Shirt cuff - drawn last to appear on top */}
-          <rect x="15" y="100" width="70" height="30" rx="3" fill="#fff" stroke="#1a1815" strokeWidth="2.5"/>
+          <rect x="15" y="100" width="70" height="90" rx="3" fill="#fff" stroke="#1a1815" strokeWidth="2.5"/>
         </svg>
       </div>
     </div>
