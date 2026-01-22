@@ -1,7 +1,7 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { news, getAwards } from '../data/news';
 
-function News({ isActive, onClose }) {
+function News({ isActive, onClose, isManual = false }) {
   const awards = getAwards();
 
   const formatDate = (dateStr) => {
@@ -13,6 +13,7 @@ function News({ isActive, onClose }) {
     <ContentPanel
       isActive={isActive}
       onClose={onClose}
+      isManual={isManual}
       title="News & Awards"
       stamp="LATEST"
     >

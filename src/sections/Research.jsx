@@ -1,11 +1,12 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { researchAreas, researchOverview } from '../data/research';
 
-function Research({ isActive, onClose }) {
+function Research({ isActive, onClose, isManual = false }) {
   return (
     <ContentPanel
       isActive={isActive}
       onClose={onClose}
+      isManual={isManual}
       title="Research Focus"
       stamp="RESOLUTION BIOLOGY"
     >

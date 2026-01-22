@@ -200,26 +200,32 @@ function App() {
       <PrincipalInvestigator
         isActive={activePanel === 'pi'}
         onClose={handleClosePanel}
+        isManual={manualNavigation}
       />
       <Research
         isActive={activePanel === 'research'}
         onClose={handleClosePanel}
+        isManual={manualNavigation}
       />
       <Publications
         isActive={activePanel === 'publications'}
         onClose={handleClosePanel}
+        isManual={manualNavigation}
       />
       <Team
         isActive={activePanel === 'team'}
         onClose={handleClosePanel}
+        isManual={manualNavigation}
       />
       <News
         isActive={activePanel === 'news'}
         onClose={handleClosePanel}
+        isManual={manualNavigation}
       />
       <Contact
         isActive={activePanel === 'contact'}
         onClose={handleClosePanel}
+        isManual={manualNavigation}
       />
 
       {/* Scroll spacer for GSAP ScrollTrigger */}

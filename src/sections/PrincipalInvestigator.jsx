@@ -1,13 +1,14 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { principalInvestigator } from '../data/team';
 
-function PrincipalInvestigator({ isActive, onClose }) {
+function PrincipalInvestigator({ isActive, onClose, isManual = false }) {
   const pi = principalInvestigator;
 
   return (
     <ContentPanel
       isActive={isActive}
       onClose={onClose}
+      isManual={isManual}
       title="Principal Investigator"
       stamp="YALE PATHOLOGY"
     >

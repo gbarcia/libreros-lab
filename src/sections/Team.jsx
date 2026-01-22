@@ -1,11 +1,12 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { principalInvestigator, teamMembers, administrativeSupport } from '../data/team';
 
-function Team({ isActive, onClose }) {
+function Team({ isActive, onClose, isManual = false }) {
   return (
     <ContentPanel
       isActive={isActive}
       onClose={onClose}
+      isManual={isManual}
       title="Lab Team"
       stamp="LIBREROS LAB"
     >

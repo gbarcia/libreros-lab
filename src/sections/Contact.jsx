@@ -1,7 +1,7 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { principalInvestigator, labLocation } from '../data/team';
 
-function Contact({ isActive, onClose }) {
+function Contact({ isActive, onClose, isManual = false }) {
   const pi = principalInvestigator;
   const loc = labLocation;
 
@@ -9,6 +9,7 @@ function Contact({ isActive, onClose }) {
     <ContentPanel
       isActive={isActive}
       onClose={onClose}
+      isManual={isManual}
       title="Contact"
       stamp="GET IN TOUCH"
     >

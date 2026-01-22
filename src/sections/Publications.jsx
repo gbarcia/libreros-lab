@@ -1,13 +1,14 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { publications, getFeaturedPublications } from '../data/publications';
 
-function Publications({ isActive, onClose }) {
+function Publications({ isActive, onClose, isManual = false }) {
   const featured = getFeaturedPublications();
 
   return (
     <ContentPanel
       isActive={isActive}
       onClose={onClose}
+      isManual={isManual}
       title="Publications"
       stamp="PEER REVIEWED"
     >
