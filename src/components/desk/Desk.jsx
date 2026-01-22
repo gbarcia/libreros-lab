@@ -32,9 +32,9 @@ import Hands from '../ui/Hands';
  *
  *        A          B          C          D
  * TOP   FOLDER     ---        ---      TERMINAL
- * BACK  Flask    TestTubes  Pipette   Microscope
+ * BACK  Flask    CoffeeCup  Pipette   Microscope
  * MID   ---      Notebook     Pen      Envelope
- * FRONT ---      PetriDish  CoffeeCup    ---
+ * FRONT ---      PetriDish  TestTubes    ---
  */
 
 const positions = {
@@ -45,7 +45,7 @@ const positions = {
 
     // BACK ROW (38-48% from bottom) - Lowered to be clearly visible
     flask: { bottom: '38%', left: '3%', zIndex: 6, transform: 'rotate(-5deg)' },
-    testTubes: { bottom: '42%', left: '38%', zIndex: 2, transform: 'rotate(3deg)' },
+    testTubes: { bottom: '5%', left: '68%', zIndex: 4, transform: 'rotate(3deg)' },
     pipette: { bottom: '40%', left: '58%', zIndex: 2, transform: 'rotate(-18deg)' },
     microscope: { bottom: '8%', left: '18%', zIndex: 3 },
 
@@ -56,7 +56,7 @@ const positions = {
 
     // FRONT ROW (3-15% from bottom) - Clear gap from mid row
     petriDish: { bottom: '6%', left: '5%', zIndex: 1, transform: 'rotate(12deg)' },
-    coffeeCup: { bottom: '5%', left: '68%', zIndex: 4 },
+    coffeeCup: { bottom: '42%', left: '38%', zIndex: 2 },
 
     // Scattered papers beneath folder and notebook
     scatteredPapers: { top: '12%', left: '0%', zIndex: 2 }
