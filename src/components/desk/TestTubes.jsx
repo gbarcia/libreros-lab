@@ -1,66 +1,56 @@
 import { forwardRef } from 'react';
 
-// Test tubes in rack SVG illustration (decorative)
+// Test tubes in rack SVG illustration - top-down view (decorative)
 const TestTubes = forwardRef(({ className = '', style = {} }, ref) => {
   return (
     <div
       ref={ref}
       className={`test-tubes desk-item ${className}`}
       style={{
-        width: 'clamp(60px, 8vw, 100px)',
-        height: 'clamp(70px, 9vw, 110px)',
+        width: 'clamp(70px, 9vw, 110px)',
+        height: 'clamp(50px, 6vw, 80px)',
         ...style
       }}
     >
       <svg
-        viewBox="0 0 80 90"
+        viewBox="0 0 100 60"
         xmlns="http://www.w3.org/2000/svg"
         style={{ width: '100%', height: '100%' }}
       >
-        {/* Rack base */}
+        {/* Rack - wooden base with holes */}
         <rect
           x="5"
-          y="75"
-          width="70"
-          height="10"
+          y="10"
+          width="90"
+          height="40"
           fill="#5c4a3d"
           stroke="#1a1815"
           strokeWidth="2"
-          rx="2"
+          rx="4"
         />
 
-        {/* Rack top bar */}
-        <rect
-          x="5"
-          y="25"
-          width="70"
-          height="6"
-          fill="#5c4a3d"
-          stroke="#1a1815"
-          strokeWidth="2"
-          rx="1"
-        />
+        {/* Wood grain lines */}
+        <line x1="10" y1="20" x2="90" y2="20" stroke="#3d322a" strokeWidth="1" opacity="0.4" />
+        <line x1="10" y1="30" x2="90" y2="30" stroke="#3d322a" strokeWidth="1" opacity="0.3" />
+        <line x1="10" y1="40" x2="90" y2="40" stroke="#3d322a" strokeWidth="1" opacity="0.4" />
 
-        {/* Rack supports */}
-        <rect x="8" y="31" width="4" height="44" fill="#5c4a3d" stroke="#1a1815" strokeWidth="1" />
-        <rect x="68" y="31" width="4" height="44" fill="#5c4a3d" stroke="#1a1815" strokeWidth="1" />
+        {/* Hole 1 with tube - blue liquid */}
+        <circle cx="22" cy="30" r="10" fill="#3d322a" stroke="#1a1815" strokeWidth="1" />
+        <circle cx="22" cy="30" r="8" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1.5" />
+        <circle cx="22" cy="30" r="6" fill="#002fa7" opacity="0.7" />
+        <circle cx="20" cy="28" r="2" fill="white" opacity="0.4" />
 
-        {/* Test tube 1 - blue liquid */}
-        <rect x="18" y="10" width="10" height="55" rx="5" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1.5" />
-        <rect x="19" y="40" width="8" height="23" rx="4" fill="#002fa7" opacity="0.6" />
+        {/* Hole 2 with tube - green liquid */}
+        <circle cx="50" cy="30" r="10" fill="#3d322a" stroke="#1a1815" strokeWidth="1" />
+        <circle cx="50" cy="30" r="8" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1.5" />
+        <circle cx="50" cy="30" r="6" fill="#33ff33" opacity="0.6" />
+        <circle cx="48" cy="28" r="2" fill="white" opacity="0.4" />
 
-        {/* Test tube 2 - green liquid */}
-        <rect x="35" y="10" width="10" height="55" rx="5" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1.5" />
-        <rect x="36" y="35" width="8" height="28" rx="4" fill="#33ff33" opacity="0.5" />
-
-        {/* Test tube 3 - red liquid */}
-        <rect x="52" y="10" width="10" height="55" rx="5" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1.5" />
-        <rect x="53" y="45" width="8" height="18" rx="4" fill="#c23b22" opacity="0.6" />
-
-        {/* Tube rims */}
-        <ellipse cx="23" cy="10" rx="5" ry="2" fill="none" stroke="#1a1815" strokeWidth="1.5" />
-        <ellipse cx="40" cy="10" rx="5" ry="2" fill="none" stroke="#1a1815" strokeWidth="1.5" />
-        <ellipse cx="57" cy="10" rx="5" ry="2" fill="none" stroke="#1a1815" strokeWidth="1.5" />
+        {/* Hole 3 with tube - red liquid */}
+        <circle cx="78" cy="30" r="10" fill="#3d322a" stroke="#1a1815" strokeWidth="1" />
+        <circle cx="78" cy="30" r="8" fill="#f7f3e9" stroke="#1a1815" strokeWidth="1.5" />
+        <circle cx="78" cy="30" r="6" fill="#c23b22" opacity="0.7" />
+        <circle cx="76" cy="28" r="2" fill="white" opacity="0.4" />
       </svg>
     </div>
   );
