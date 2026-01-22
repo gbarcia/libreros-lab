@@ -7,8 +7,8 @@ const TestTubes = forwardRef(({ className = '', style = {} }, ref) => {
       ref={ref}
       className={`test-tubes desk-item ${className}`}
       style={{
-        width: 'clamp(70px, 9vw, 110px)',
-        height: 'clamp(70px, 9vw, 110px)',
+        width: 'clamp(140px, 18vw, 220px)',
+        height: 'clamp(140px, 18vw, 220px)',
         ...style
       }}
     >
