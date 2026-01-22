@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 
 const tracks = [
   { id: 1, name: 'Ambient Lab', freq: '88.1 FM', src: '/1.m4a' },
@@ -10,29 +10,61 @@ const Radio = () => {
   const [currentTrack, setCurrentTrack] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
   const [volume, setVolume] = useState(0.5);
-  const [isAnimating, setIsAnimating] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
   const popupRef = useRef(null);
+
+  // Play audio function
+  const playAudio = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume;
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => setIsPlaying(true))
+          .catch((err) => {
+            console.log('Audio play failed:', err);
+            setIsPlaying(false);
+          });
+      }
+    }
+  }, [volume]);
+
+  // Pause audio function
+  const pauseAudio = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
+  }, []);
 
   // Handle audio play/pause based on mute state
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = volume;
-      if (!isMuted) {
-        audioRef.current.play().catch(console.error);
-      } else {
-        audioRef.current.pause();
-      }
     }
-  }, [isMuted, volume]);
+    if (!isMuted) {
+      playAudio();
+    } else {
+      pauseAudio();
+    }
+  }, [isMuted, playAudio, pauseAudio, volume]);
 
   // Handle track change
   useEffect(() => {
-    if (audioRef.current && !isMuted) {
-      audioRef.current.load();
-      audioRef.current.play().catch(console.error);
+    if (audioRef.current) {
+      audioRef.current.src = tracks[currentTrack].src;
+      if (!isMuted) {
+        audioRef.current.load();
+        // Wait for canplay event before playing
+        const handleCanPlay = () => {
+          playAudio();
+          audioRef.current.removeEventListener('canplay', handleCanPlay);
+        };
+        audioRef.current.addEventListener('canplay', handleCanPlay);
+      }
     }
-  }, [currentTrack]);
+  }, [currentTrack, isMuted, playAudio]);
 
   // Close popup when clicking outside
   useEffect(() => {
@@ -49,13 +81,18 @@ const Radio = () => {
   }, [showPopup]);
 
   const handleRadioClick = (e) => {
+    // Don't open popup if clicking on knob
+    if (e.target.closest('.radio-knob')) {
+      return;
+    }
     e.stopPropagation();
     setShowPopup(!showPopup);
   };
 
   const handleMuteToggle = (e) => {
     e.stopPropagation();
-    setIsMuted(!isMuted);
+    e.preventDefault();
+    setIsMuted((prev) => !prev);
   };
 
   const handleTrackChange = (trackIndex) => {
@@ -169,7 +206,7 @@ const Radio = () => {
             fill={isMuted ? '#666' : '#ff3333'}
             stroke="#1a1815"
             strokeWidth="1"
-            className={!isMuted && isAnimating ? 'radio-led-pulse' : ''}
+            className={!isMuted && isPlaying ? 'radio-led-pulse' : ''}
           />
 
           {/* LED label */}
