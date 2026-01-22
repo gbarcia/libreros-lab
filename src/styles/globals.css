@@ -1,0 +1,163 @@
+/* ============================================
+   LIBREROS LAB - Global Styles
+   Based on genesis-lab-final.html prototype
+   ============================================ */
+
+:root {
+    /* Paper & Background */
+    --paper-cream: #f7f3e9;
+    --paper-aged: #e8e0cc;
+
+    /* Ink Colors */
+    --ink-black: #1a1815;
+    --ink-faded: #3d3a35;
+
+    /* Accent Colors */
+    --blue-klein: #002fa7;
+    --blue-faded: #4a6fa5;
+    --red-stamp: #c23b22;
+    --green-terminal: #33ff33;
+
+    /* Desk Colors */
+    --desk-wood: #5c4a3d;
+    --desk-dark: #3d322a;
+
+    /* Yale Blue (optional) */
+    --yale-blue: #00356b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--paper-cream);
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: var(--ink-black);
+    overflow-x: hidden;
+    cursor: default;
+}
+
+/* Paper Texture Overlay */
+.paper-texture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    mix-blend-mode: multiply;
+}
+
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: var(--blue-klein);
+    width: 0%;
+    z-index: 1001;
+    transition: width 0.1s ease-out;
+}
+
+/* Scene Container */
+.scene-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Scroll Spacer for GSAP ScrollTrigger */
+.scroll-spacer {
+    height: 600vh;
+    position: relative;
+    z-index: -1;
+}
+
+/* Typography */
+.mono {
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.serif {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Common Stamp Style */
+.stamp {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red-stamp);
+    border: 1px solid var(--red-stamp);
+    padding: 2px 6px;
+    display: inline-block;
+}
+
+/* Clickable Items */
+.clickable {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clickable:hover {
+    transform: scale(1.02);
+}
+
+.clickable:active {
+    transform: scale(0.98);
+}
+
+/* Animations */
+@keyframes steam {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateX(-50%) translateY(-5px);
+        opacity: 0.2;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: rotate(45deg) translateY(0);
+    }
+    50% {
+        transform: rotate(45deg) translateY(5px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Utility Classes */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.visible {
+    opacity: 1;
+    pointer-events: auto;
+}

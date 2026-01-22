@@ -1,0 +1,227 @@
+/* ============================================
+   RESPONSIVE STYLES
+   Desktop vs Mobile adaptations
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .desk {
+        height: 65vh;
+    }
+
+    .folder {
+        top: 5%;
+        left: 3%;
+    }
+
+    .terminal {
+        top: 3%;
+        right: 2%;
+    }
+
+    .notebook {
+        bottom: 35%;
+        left: 25%;
+    }
+
+    .coffee-cup {
+        bottom: 25%;
+        right: 25%;
+    }
+
+    .pen {
+        bottom: 30%;
+        left: 50%;
+    }
+
+    .hands-container {
+        bottom: -15px;
+    }
+
+    .hand-svg {
+        width: clamp(80px, 12vw, 130px);
+    }
+
+    /* Hide some decorative elements on tablet */
+    .flask,
+    .petri-dish {
+        display: none;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .masthead {
+        top: 10px;
+    }
+
+    .masthead h1 {
+        font-size: 1.5rem;
+    }
+
+    .desk {
+        height: 55vh;
+    }
+
+    /* Simplify desk layout for mobile */
+    .notebook,
+    .pen,
+    .pipette,
+    .test-tubes {
+        display: none;
+    }
+
+    .folder {
+        top: 8%;
+        left: 5%;
+        width: 120px;
+        height: 150px;
+    }
+
+    .terminal {
+        top: 5%;
+        right: 5%;
+        width: 160px;
+        height: 140px;
+    }
+
+    .coffee-cup {
+        bottom: 35%;
+        right: 15%;
+    }
+
+    /* Hide hands on mobile */
+    .hands-container {
+        display: none;
+    }
+
+    /* Larger touch targets */
+    .desk-item {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    /* Content panels full width on mobile */
+    .content-panel {
+        width: 95%;
+        max-height: 85vh;
+        padding: 20px;
+    }
+
+    .panel-header {
+        flex-direction: column;
+    }
+
+    /* Research grid single column */
+    .research-topics {
+        grid-template-columns: 1fr;
+    }
+
+    /* Team grid single column */
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact single column */
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    /* PI photo smaller */
+    .pi-photo {
+        width: 100px;
+        height: 100px;
+        float: none;
+        display: block;
+        margin: 0 auto 15px auto;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+    .desk {
+        height: 75vh;
+    }
+
+    .folder {
+        width: 250px;
+        height: 320px;
+    }
+
+    .terminal {
+        width: 450px;
+        height: 380px;
+    }
+
+    .content-panel {
+        max-width: 800px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .desk-item:hover {
+        transform: none;
+        box-shadow: inherit;
+    }
+
+    .desk-item:active {
+        transform: scale(0.95);
+    }
+
+    .clickable:hover {
+        transform: none;
+    }
+
+    .clickable:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .scroll-arrow {
+        animation: none;
+    }
+
+    .coffee-steam {
+        animation: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .paper-texture,
+    .progress-bar,
+    .scroll-indicator,
+    .hands-container,
+    .narrative-section {
+        display: none !important;
+    }
+
+    .desk {
+        position: relative;
+        height: auto;
+        background: white;
+        border: none;
+        box-shadow: none;
+    }
+
+    .content-panel {
+        position: relative;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+}

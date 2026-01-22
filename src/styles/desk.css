@@ -1,0 +1,444 @@
+/* ============================================
+   DESK STYLES
+   Escritorio ilustrado y sus elementos
+   ============================================ */
+
+/* Masthead */
+.masthead {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 50;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.masthead-line {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+    margin-bottom: 8px;
+}
+
+.masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 5vw, 2.8rem);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -1px;
+    color: var(--ink-black);
+}
+
+.masthead h1 span {
+    font-weight: 700;
+    font-style: normal;
+}
+
+.masthead-subtitle {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(0.5rem, 1.2vw, 0.65rem);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue-klein);
+    margin-top: 10px;
+    padding: 5px 15px;
+    border: 1px solid var(--blue-klein);
+    display: inline-block;
+}
+
+/* Desk */
+.desk {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70vh;
+    background: linear-gradient(180deg, var(--desk-wood) 0%, var(--desk-dark) 100%);
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,0.1),
+        inset 0 -5px 20px rgba(0,0,0,0.2);
+    border-top: 4px solid var(--ink-black);
+    overflow: visible;
+}
+
+.desk::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 120px,
+        rgba(0,0,0,0.03) 120px,
+        rgba(0,0,0,0.03) 122px
+    );
+    pointer-events: none;
+}
+
+.desk::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg,
+        var(--desk-dark) 0%,
+        var(--desk-wood) 50%,
+        var(--desk-dark) 100%
+    );
+}
+
+/* Desk Item Base */
+.desk-item {
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.desk-item:hover {
+    z-index: 10;
+}
+
+/* Folder */
+.folder {
+    top: 10%;
+    left: 5%;
+    width: clamp(140px, 15vw, 220px);
+    height: clamp(180px, 20vw, 280px);
+    background: var(--paper-aged);
+    border: 2px solid var(--ink-black);
+    border-radius: 3px;
+    transform: rotate(-8deg);
+    box-shadow: 4px 4px 0 var(--ink-black);
+}
+
+.folder::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 15px;
+    width: clamp(50px, 8vw, 80px);
+    height: 12px;
+    background: var(--paper-aged);
+    border: 2px solid var(--ink-black);
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+}
+
+.folder:hover {
+    box-shadow: 8px 8px 0 var(--ink-black), 0 0 30px rgba(0,47,167,0.3);
+    transform: rotate(-8deg) scale(1.05);
+}
+
+.folder-label {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    right: 15px;
+}
+
+.folder-label-stamp {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(0.45rem, 1vw, 0.6rem);
+    letter-spacing: 2px;
+    color: var(--red-stamp);
+    border: 1px solid var(--red-stamp);
+    padding: 2px 6px;
+    display: inline-block;
+    transform: rotate(-3deg);
+}
+
+.folder-label h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+    margin-top: 12px;
+    font-weight: 400;
+}
+
+.folder-label p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(0.5rem, 0.9vw, 0.65rem);
+    color: var(--ink-faded);
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+/* Terminal */
+.terminal {
+    top: 5%;
+    right: 5%;
+    width: clamp(220px, 28vw, 400px);
+    height: clamp(180px, 24vw, 340px);
+    background: #2a2a2a;
+    border: 4px solid var(--ink-black);
+    border-radius: 15px;
+    box-shadow:
+        8px 8px 0 var(--ink-black),
+        inset 0 0 30px rgba(0,0,0,0.5);
+    transform: rotate(2deg);
+}
+
+.terminal:hover {
+    box-shadow: 12px 12px 0 var(--ink-black), 0 0 40px rgba(51,255,51,0.2);
+    transform: rotate(2deg) scale(1.02);
+}
+
+.terminal-bezel {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 50px;
+    background: #111;
+    border-radius: 8px;
+    border: 3px solid #444;
+    overflow: hidden;
+}
+
+.terminal-screen {
+    width: 100%;
+    height: 100%;
+    background: #0a0a0a;
+    padding: clamp(8px, 2vw, 15px);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(0.6rem, 1.2vw, 0.85rem);
+    color: var(--green-terminal);
+    line-height: 1.5;
+    overflow: hidden;
+    position: relative;
+}
+
+.terminal-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+}
+
+.terminal-controls {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+}
+
+.terminal-knob {
+    width: clamp(15px, 2vw, 25px);
+    height: clamp(15px, 2vw, 25px);
+    background: radial-gradient(circle at 30% 30%, #666, #333);
+    border-radius: 50%;
+    border: 2px solid #222;
+}
+
+.terminal-led {
+    width: 10px;
+    height: 10px;
+    background: #333;
+    border-radius: 50%;
+    border: 1px solid #222;
+    transition: all 0.3s;
+    align-self: center;
+}
+
+.terminal-led.active {
+    background: var(--green-terminal);
+    box-shadow: 0 0 10px var(--green-terminal);
+}
+
+/* Notebook */
+.notebook {
+    bottom: 25%;
+    left: 30%;
+    width: clamp(120px, 12vw, 180px);
+    height: clamp(150px, 15vw, 220px);
+    background: var(--paper-cream);
+    border: 2px solid var(--ink-black);
+    box-shadow: 3px 3px 0 var(--ink-black);
+    transform: rotate(5deg);
+}
+
+.notebook:hover {
+    box-shadow: 6px 6px 0 var(--ink-black);
+    transform: rotate(5deg) scale(1.05);
+}
+
+.notebook::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 20px);
+    background: repeating-linear-gradient(
+        var(--paper-cream),
+        var(--paper-cream) 20px,
+        var(--blue-faded) 20px,
+        var(--blue-faded) 21px
+    );
+}
+
+.notebook-spine {
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--red-stamp);
+    border: 2px solid var(--ink-black);
+    border-right: none;
+}
+
+.notebook-text {
+    position: relative;
+    z-index: 1;
+    padding: 15px 12px;
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(0.55rem, 1vw, 0.75rem);
+    font-style: italic;
+    color: var(--blue-klein);
+    line-height: 21px;
+}
+
+/* Coffee Cup */
+.coffee-cup {
+    bottom: 15%;
+    right: 30%;
+    width: clamp(40px, 5vw, 60px);
+    height: clamp(35px, 4vw, 50px);
+    background: var(--paper-cream);
+    border: 3px solid var(--ink-black);
+    border-radius: 0 0 30px 30px;
+    box-shadow: 3px 3px 0 var(--ink-black);
+}
+
+.coffee-cup::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: -15px;
+    width: 15px;
+    height: 18px;
+    border: 3px solid var(--ink-black);
+    border-left: none;
+    border-radius: 0 12px 12px 0;
+}
+
+.coffee-steam {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    opacity: 0.4;
+    animation: steam 2s ease-in-out infinite;
+}
+
+/* Pen */
+.pen {
+    bottom: 20%;
+    left: 55%;
+    width: clamp(80px, 10vw, 140px);
+    height: 12px;
+    background: linear-gradient(90deg, #1a1a1a 0%, #1a1a1a 70%, #c9a227 70%, #c9a227 100%);
+    border: 2px solid var(--ink-black);
+    border-radius: 2px 6px 6px 2px;
+    transform: rotate(-35deg);
+    box-shadow: 2px 2px 0 var(--ink-black);
+}
+
+.pen::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right: 10px solid #1a1a1a;
+}
+
+/* Hands Container */
+.hands-container {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: clamp(30px, 6vw, 80px);
+    z-index: 100;
+    pointer-events: none;
+}
+
+.hand-svg {
+    width: clamp(100px, 14vw, 160px);
+    height: auto;
+    filter: drop-shadow(2px 3px 2px rgba(0,0,0,0.3));
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 50;
+}
+
+.scroll-indicator p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(0.55rem, 1.2vw, 0.7rem);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+    margin-bottom: 8px;
+}
+
+.scroll-arrow {
+    width: 16px;
+    height: 16px;
+    border-right: 2px solid var(--ink-black);
+    border-bottom: 2px solid var(--ink-black);
+    transform: rotate(45deg);
+    margin: 0 auto;
+    animation: bounce 2s infinite;
+}
+
+/* Narrative Section Labels */
+.narrative-section {
+    position: fixed;
+    left: 15px;
+    bottom: 100px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(0.55rem, 1.2vw, 0.7rem);
+    color: var(--ink-faded);
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 50;
+    background: var(--paper-cream);
+    padding: 8px 12px;
+    border-left: 3px solid var(--blue-klein);
+}
+
+.narrative-section.visible {
+    opacity: 1;
+}
