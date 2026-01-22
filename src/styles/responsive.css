@@ -28,6 +28,16 @@
 
 /* Mobile */
 @media (max-width: 767px) {
+    /* Hide paper texture on mobile */
+    .paper-texture {
+        display: none !important;
+    }
+
+    /* Body background same as desk wood */
+    body {
+        background: linear-gradient(180deg, #5c4a3d 0%, #3d322a 100%);
+    }
+
     .masthead {
         top: 10px;
     }
@@ -41,6 +51,8 @@
         height: 100vh;
         top: 0;
         bottom: auto;
+        border-top: none;
+        box-shadow: none;
     }
 
     /* Hide ALL desk items - only show table, mat and hands */
