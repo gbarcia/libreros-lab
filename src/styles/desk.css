@@ -106,7 +106,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: clamp(400px, 50vw, 700px);
-    height: clamp(180px, 22vh, 280px);
+    height: clamp(280px, 45vh, 420px);
     background: #925244;
     border: 3px solid #1a1815;
     border-bottom: none;
