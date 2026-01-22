@@ -50,10 +50,11 @@ function App() {
     navigateTo(section);
   }, [navigateTo]);
 
-  // Handle closing panel
+  // Handle closing panel - scroll back to top to reset state
   const handleClosePanel = useCallback(() => {
     setManualNavigation(false);
     closePanel();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [closePanel]);
 
   // Determine which section should be active based on scroll progress
