@@ -36,8 +36,10 @@
         font-size: 1.5rem;
     }
 
+    /* Desk starts lower, below masthead */
     .desk {
-        height: 55vh;
+        height: 48vh;
+        top: auto;
     }
 
     /* ALL desk items visible as decorative background */
