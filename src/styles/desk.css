@@ -384,6 +384,15 @@
     filter: drop-shadow(2px 3px 2px rgba(0,0,0,0.3));
 }
 
+.hand-clickable {
+    pointer-events: auto;
+    transition: filter 0.3s ease;
+}
+
+.hand-clickable:hover {
+    filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.4));
+}
+
 /* Scroll Indicator */
 .scroll-indicator {
     position: fixed;
