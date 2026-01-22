@@ -8,8 +8,8 @@ const Microscope = forwardRef(({ onClick, className = '', style = {} }, ref) => 
       className={`microscope desk-item clickable ${className}`}
       onClick={onClick}
       style={{
-        width: 'clamp(70px, 9vw, 120px)',
-        height: 'clamp(100px, 12vw, 160px)',
+        width: 'clamp(210px, 27vw, 360px)',
+        height: 'clamp(300px, 36vw, 480px)',
         ...style
       }}
     >
