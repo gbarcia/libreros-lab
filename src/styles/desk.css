@@ -539,9 +539,9 @@
     filter: drop-shadow(0 6px 12px rgba(74, 111, 165, 0.5));
 }
 
-/* Microscope Fun Animation */
+/* Microscope Styles */
 .microscope {
-    animation: microscopeFloat 3s ease-in-out infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 /* Microscope 30% larger on desktop */
@@ -552,30 +552,9 @@
     }
 }
 
-@keyframes microscopeFloat {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    25% {
-        transform: translateY(-8px) rotate(2deg);
-    }
-    75% {
-        transform: translateY(-4px) rotate(-2deg);
-    }
-}
-
 .microscope:hover {
-    animation: microscopeWobble 0.5s ease-in-out infinite;
+    transform: scale(1.05);
     filter: drop-shadow(0 8px 20px rgba(51, 255, 51, 0.4));
-}
-
-@keyframes microscopeWobble {
-    0%, 100% {
-        transform: rotate(-3deg) scale(1.08);
-    }
-    50% {
-        transform: rotate(3deg) scale(1.08);
-    }
 }
 
 .microscope svg circle:last-child {
