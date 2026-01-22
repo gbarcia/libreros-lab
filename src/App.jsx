@@ -37,6 +37,8 @@ function App() {
   const [progress, setProgress] = useState(0);
   const [terminalActive, setTerminalActive] = useState(true);
   const [manualNavigation, setManualNavigation] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const pendingSectionRef = useRef(null);
 
   // Refs
   const mastheadRef = useRef(null);
@@ -69,16 +71,36 @@ function App() {
   }, []);
 
   // Update active section based on scroll progress (only if not manually navigating)
+  // Closes current panel first, waits for transition, then opens next panel
   useEffect(() => {
-    if (manualNavigation) return;
+    if (manualNavigation || isTransitioning) return;
 
     const targetSection = getSectionForProgress(progress);
+
+    // If we need to change to a different section
     if (targetSection && targetSection !== activePanel) {
-      navigateTo(targetSection);
+      // If there's already a panel open, close it first and queue the next one
+      if (activePanel) {
+        setIsTransitioning(true);
+        pendingSectionRef.current = targetSection;
+        closePanel();
+
+        // Wait for close animation + hand movement, then open next panel
+        setTimeout(() => {
+          if (pendingSectionRef.current) {
+            navigateTo(pendingSectionRef.current);
+            pendingSectionRef.current = null;
+          }
+          setIsTransitioning(false);
+        }, 600); // Delay for close animation + hands movement
+      } else {
+        // No panel open, just open the new one directly
+        navigateTo(targetSection);
+      }
     } else if (!targetSection && activePanel) {
       closePanel();
     }
-  }, [progress, activePanel, navigateTo, closePanel, getSectionForProgress, manualNavigation]);
+  }, [progress, activePanel, navigateTo, closePanel, getSectionForProgress, manualNavigation, isTransitioning]);
 
   // GSAP Scroll Animations
   useEffect(() => {
