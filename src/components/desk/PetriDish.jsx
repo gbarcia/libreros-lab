@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-// Petri dish SVG illustration
+// Petri dish SVG illustration - top-down view
 const PetriDish = forwardRef(({ onClick, className = '', style = {} }, ref) => {
   return (
     <div
@@ -9,72 +9,63 @@ const PetriDish = forwardRef(({ onClick, className = '', style = {} }, ref) => {
       onClick={onClick}
       style={{
         width: 'clamp(70px, 9vw, 110px)',
-        height: 'clamp(50px, 6vw, 80px)',
+        height: 'clamp(70px, 9vw, 110px)',
         ...style
       }}
     >
       <svg
-        viewBox="0 0 100 60"
+        viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
         style={{ width: '100%', height: '100%' }}
       >
-        {/* Dish bottom (3D effect) */}
-        <ellipse
+        {/* Outer rim / lid edge */}
+        <circle
           cx="50"
-          cy="45"
-          rx="45"
-          ry="12"
+          cy="50"
+          r="46"
+          fill="#f7f3e9"
+          stroke="#1a1815"
+          strokeWidth="2.5"
+        />
+
+        {/* Inner dish edge */}
+        <circle
+          cx="50"
+          cy="50"
+          r="40"
           fill="#e8e0cc"
           stroke="#1a1815"
-          strokeWidth="2"
-        />
-
-        {/* Dish side */}
-        <path
-          d="M 5 35 L 5 45 A 45 12 0 0 0 95 45 L 95 35"
-          fill="#f7f3e9"
-          stroke="#1a1815"
-          strokeWidth="2"
-        />
-
-        {/* Dish top rim */}
-        <ellipse
-          cx="50"
-          cy="35"
-          rx="45"
-          ry="12"
-          fill="#f7f3e9"
-          stroke="#1a1815"
-          strokeWidth="2"
+          strokeWidth="1.5"
         />
 
         {/* Agar/culture medium */}
-        <ellipse
+        <circle
           cx="50"
-          cy="37"
-          rx="38"
-          ry="9"
+          cy="50"
+          r="36"
           fill="#e8c9a8"
-          opacity="0.8"
+          opacity="0.9"
         />
 
-        {/* Bacterial colonies */}
-        <circle cx="35" cy="35" r="4" fill="#4a6fa5" opacity="0.7" />
-        <circle cx="55" cy="33" r="5" fill="#4a6fa5" opacity="0.6" />
-        <circle cx="65" cy="38" r="3" fill="#4a6fa5" opacity="0.8" />
-        <circle cx="42" cy="40" r="3.5" fill="#4a6fa5" opacity="0.5" />
-        <circle cx="58" cy="42" r="2.5" fill="#4a6fa5" opacity="0.7" />
-        <circle cx="30" cy="38" r="2" fill="#4a6fa5" opacity="0.6" />
-        <circle cx="70" cy="35" r="2" fill="#4a6fa5" opacity="0.5" />
+        {/* Bacterial colonies - scattered pattern */}
+        <circle cx="35" cy="38" r="5" fill="#4a6fa5" opacity="0.7" />
+        <circle cx="58" cy="42" r="6" fill="#4a6fa5" opacity="0.6" />
+        <circle cx="68" cy="55" r="4" fill="#4a6fa5" opacity="0.8" />
+        <circle cx="42" cy="58" r="4.5" fill="#4a6fa5" opacity="0.5" />
+        <circle cx="55" cy="65" r="3.5" fill="#4a6fa5" opacity="0.7" />
+        <circle cx="30" cy="52" r="3" fill="#4a6fa5" opacity="0.6" />
+        <circle cx="62" cy="32" r="3" fill="#4a6fa5" opacity="0.5" />
+        <circle cx="48" cy="35" r="2.5" fill="#4a6fa5" opacity="0.6" />
+        <circle cx="38" cy="68" r="2" fill="#4a6fa5" opacity="0.5" />
 
-        {/* Lid reflection */}
-        <ellipse
-          cx="40"
-          cy="25"
-          rx="15"
-          ry="4"
-          fill="white"
-          opacity="0.3"
+        {/* Lid reflection highlight */}
+        <path
+          d="M 25 35 Q 35 25, 50 28 Q 55 29, 58 32"
+          fill="none"
+          stroke="white"
+          strokeWidth="3"
+          strokeLinecap="round"
+          opacity="0.4"
         />
       </svg>
     </div>
