@@ -161,7 +161,7 @@ const Desk = forwardRef(({
         style={getPos('folder')}
       />
       <Terminal
-        onClick={(e) => handleItemClick('research', e)}
+        onClick={(e) => handleItemClick('assistant', e)}
         isActive={terminalActive}
         style={getPos('terminal')}
       />

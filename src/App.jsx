@@ -8,6 +8,7 @@ import Radio from './components/ui/Radio';
 
 // Sections
 import PrincipalInvestigator from './sections/PrincipalInvestigator';
+import Research from './sections/Research';
 import LabAssistant from './sections/LabAssistant';
 import Publications from './sections/Publications';
 import Team from './sections/Team';
@@ -83,8 +84,17 @@ function App() {
         currentIndex={carousel.currentIndex}
         totalSections={carousel.total}
       />
-      <LabAssistant
+      <Research
         isActive={getActivePanel('research')}
+        onClose={handleClosePanel}
+        isMobile={isMobile}
+        onNext={carousel.next}
+        onPrev={carousel.prev}
+        currentIndex={carousel.currentIndex}
+        totalSections={carousel.total}
+      />
+      <LabAssistant
+        isActive={getActivePanel('assistant')}
         onClose={handleClosePanel}
         isMobile={isMobile}
         onNext={carousel.next}
