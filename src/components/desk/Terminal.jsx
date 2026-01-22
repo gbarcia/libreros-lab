@@ -1,6 +1,6 @@
 import { forwardRef, useState, useEffect, useRef } from 'react';
 
-const Terminal = forwardRef(({ onClick, isActive = false, className = '' }, ref) => {
+const Terminal = forwardRef(({ onClick, isActive = false, className = '', style = {} }, ref) => {
   const [displayText, setDisplayText] = useState('> SYSTEM STANDBY...\n> _');
   const [ledActive, setLedActive] = useState(false);
   const typingRef = useRef(null);
@@ -46,7 +46,7 @@ const Terminal = forwardRef(({ onClick, isActive = false, className = '' }, ref)
   }, [isActive]);
 
   return (
-    <div ref={ref} className={`terminal desk-item clickable ${className}`} onClick={onClick}>
+    <div ref={ref} className={`terminal desk-item clickable ${className}`} onClick={onClick} style={style}>
       <div className="terminal-bezel">
         <div className="terminal-screen">
           {displayText.split('\n').map((line, i) => (

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 // Sealed envelope SVG illustration
-const Envelope = forwardRef(({ onClick, className = '' }, ref) => {
+const Envelope = forwardRef(({ onClick, className = '', style = {} }, ref) => {
   return (
     <div
       ref={ref}
@@ -9,7 +9,8 @@ const Envelope = forwardRef(({ onClick, className = '' }, ref) => {
       onClick={onClick}
       style={{
         width: 'clamp(80px, 10vw, 130px)',
-        height: 'clamp(55px, 7vw, 90px)'
+        height: 'clamp(55px, 7vw, 90px)',
+        ...style
       }}
     >
       <svg

@@ -109,8 +109,6 @@
 
 /* Folder */
 .folder {
-    top: 10%;
-    left: 5%;
     width: clamp(140px, 15vw, 220px);
     height: clamp(180px, 20vw, 280px);
     background: var(--paper-aged);
@@ -173,8 +171,6 @@
 
 /* Terminal */
 .terminal {
-    top: 5%;
-    right: 5%;
     width: clamp(220px, 28vw, 400px);
     height: clamp(180px, 24vw, 340px);
     background: #2a2a2a;
@@ -267,8 +263,6 @@
 
 /* Notebook */
 .notebook {
-    bottom: 25%;
-    left: 30%;
     width: clamp(120px, 12vw, 180px);
     height: clamp(150px, 15vw, 220px);
     background: var(--paper-cream);
@@ -321,8 +315,6 @@
 
 /* Coffee Cup */
 .coffee-cup {
-    bottom: 15%;
-    right: 30%;
     width: clamp(40px, 5vw, 60px);
     height: clamp(35px, 4vw, 50px);
     background: var(--paper-cream);
@@ -355,8 +347,6 @@
 
 /* Pen */
 .pen {
-    bottom: 20%;
-    left: 55%;
     width: clamp(80px, 10vw, 140px);
     height: 12px;
     background: linear-gradient(90deg, #1a1a1a 0%, #1a1a1a 70%, #c9a227 70%, #c9a227 100%);

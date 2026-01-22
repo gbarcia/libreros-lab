@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 // Petri dish SVG illustration
-const PetriDish = forwardRef(({ onClick, className = '' }, ref) => {
+const PetriDish = forwardRef(({ onClick, className = '', style = {} }, ref) => {
   return (
     <div
       ref={ref}
@@ -9,7 +9,8 @@ const PetriDish = forwardRef(({ onClick, className = '' }, ref) => {
       onClick={onClick}
       style={{
         width: 'clamp(70px, 9vw, 110px)',
-        height: 'clamp(50px, 6vw, 80px)'
+        height: 'clamp(50px, 6vw, 80px)',
+        ...style
       }}
     >
       <svg

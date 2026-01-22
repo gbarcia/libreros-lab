@@ -42,6 +42,11 @@ const Desk = forwardRef(({
       {!isMobile && (
         <Notebook
           onClick={() => onNavigate?.('publications')}
+          style={{
+            bottom: '25%',
+            left: '30%',
+            transform: 'rotate(5deg)'
+          }}
         />
       )}
 
@@ -83,7 +88,13 @@ const Desk = forwardRef(({
 
       {!isMobile && (
         <>
-          <Pen />
+          <Pen
+            style={{
+              bottom: '20%',
+              left: '55%',
+              transform: 'rotate(-35deg)'
+            }}
+          />
           <TestTubes
             style={{
               bottom: '40%',

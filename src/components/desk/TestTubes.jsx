@@ -1,14 +1,15 @@
 import { forwardRef } from 'react';
 
 // Test tubes in rack SVG illustration (decorative)
-const TestTubes = forwardRef(({ className = '' }, ref) => {
+const TestTubes = forwardRef(({ className = '', style = {} }, ref) => {
   return (
     <div
       ref={ref}
       className={`desk-item ${className}`}
       style={{
         width: 'clamp(60px, 8vw, 100px)',
-        height: 'clamp(70px, 9vw, 110px)'
+        height: 'clamp(70px, 9vw, 110px)',
+        ...style
       }}
     >
       <svg

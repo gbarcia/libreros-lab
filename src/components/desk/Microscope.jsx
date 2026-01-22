@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 // Microscope SVG illustration
-const Microscope = forwardRef(({ onClick, className = '' }, ref) => {
+const Microscope = forwardRef(({ onClick, className = '', style = {} }, ref) => {
   return (
     <div
       ref={ref}
@@ -9,7 +9,8 @@ const Microscope = forwardRef(({ onClick, className = '' }, ref) => {
       onClick={onClick}
       style={{
         width: 'clamp(70px, 9vw, 120px)',
-        height: 'clamp(100px, 12vw, 160px)'
+        height: 'clamp(100px, 12vw, 160px)',
+        ...style
       }}
     >
       <svg

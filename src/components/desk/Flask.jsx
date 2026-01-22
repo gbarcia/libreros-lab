@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 // Erlenmeyer Flask SVG illustration
-const Flask = forwardRef(({ onClick, className = '' }, ref) => {
+const Flask = forwardRef(({ onClick, className = '', style = {} }, ref) => {
   return (
     <div
       ref={ref}
@@ -9,7 +9,8 @@ const Flask = forwardRef(({ onClick, className = '' }, ref) => {
       onClick={onClick}
       style={{
         width: 'clamp(60px, 8vw, 100px)',
-        height: 'clamp(80px, 10vw, 130px)'
+        height: 'clamp(80px, 10vw, 130px)',
+        ...style
       }}
     >
       <svg

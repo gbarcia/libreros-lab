@@ -1,14 +1,15 @@
 import { forwardRef } from 'react';
 
 // Pipette SVG illustration (decorative)
-const Pipette = forwardRef(({ className = '' }, ref) => {
+const Pipette = forwardRef(({ className = '', style = {} }, ref) => {
   return (
     <div
       ref={ref}
       className={`desk-item ${className}`}
       style={{
         width: 'clamp(20px, 3vw, 35px)',
-        height: 'clamp(100px, 12vw, 160px)'
+        height: 'clamp(100px, 12vw, 160px)',
+        ...style
       }}
     >
       <svg
