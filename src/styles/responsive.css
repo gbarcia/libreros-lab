@@ -94,8 +94,9 @@
     /* Position test tubes on mobile */
     .test-tubes {
         width: 90px !important;
-        left: 40% !important;
+        left: 22% !important;
         top: 22% !important;
+        z-index: 50 !important;
     }
 
     /* Position terminal on mobile */
