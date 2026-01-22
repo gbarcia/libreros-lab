@@ -48,10 +48,31 @@ function App() {
     navigateTo(section);
   }, [navigateTo]);
 
+  // Determine which section should be active based on scroll progress
+  const getSectionForProgress = useCallback((prog) => {
+    if (prog < 10) return null;
+    if (prog < 25) return 'pi';
+    if (prog < 40) return 'research';
+    if (prog < 55) return 'publications';
+    if (prog < 70) return 'team';
+    if (prog < 85) return 'news';
+    return 'contact';
+  }, []);
+
+  // Update active section based on scroll progress
+  useEffect(() => {
+    const targetSection = getSectionForProgress(progress);
+    if (targetSection && targetSection !== activePanel) {
+      navigateTo(targetSection);
+    } else if (!targetSection && activePanel) {
+      closePanel();
+    }
+  }, [progress, activePanel, navigateTo, closePanel, getSectionForProgress]);
+
   // GSAP Scroll Animations
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Progress bar
+      // Progress bar and section navigation
       ScrollTrigger.create({
         trigger: '.scroll-spacer',
         start: 'top top',
@@ -61,7 +82,7 @@ function App() {
         }
       });
 
-      // Main timeline
+      // Main timeline for visual animations only
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: '.scroll-spacer',
@@ -80,19 +101,6 @@ function App() {
       if (mastheadRef.current) {
         tl.to(mastheadRef.current, { y: -100, opacity: 0, duration: 2 }, '<');
       }
-
-      // Activate terminal at 30% scroll
-      tl.add(() => {
-        setTerminalActive(true);
-      }, 0.3);
-
-      // Open sections based on scroll progress
-      tl.add(() => navigateTo('pi'), 0.15);
-      tl.add(() => navigateTo('research'), 0.30);
-      tl.add(() => navigateTo('publications'), 0.45);
-      tl.add(() => navigateTo('team'), 0.60);
-      tl.add(() => navigateTo('news'), 0.75);
-      tl.add(() => navigateTo('contact'), 0.90);
 
       // Animate hands if on desktop
       if (!isMobile && !isTablet) {
@@ -127,7 +135,7 @@ function App() {
     });
 
     return () => ctx.revert();
-  }, [isMobile, isTablet, navigateTo]);
+  }, [isMobile, isTablet]);
 
   // Refresh ScrollTrigger on resize
   useEffect(() => {
