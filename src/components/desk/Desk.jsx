@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useState, useCallback } from 'react';
 import Folder from './Folder';
 import Terminal from './Terminal';
 import Notebook from './Notebook';
@@ -84,6 +84,7 @@ const Desk = forwardRef(({
   isTablet = false,
   className = ''
 }, ref) => {
+  const [handTarget, setHandTarget] = useState(null);
 
   const getPos = (element) => {
     if (isMobile) return positions.mobile[element] || null;
@@ -93,15 +94,29 @@ const Desk = forwardRef(({
 
   const shouldRender = (element) => getPos(element) !== null;
 
+  // Handle click with position tracking for hands animation
+  const handleItemClick = useCallback((section, event) => {
+    // Get click position for hands animation
+    if (event && !isMobile && !isTablet) {
+      const rect = event.currentTarget.getBoundingClientRect();
+      setHandTarget({
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+        timestamp: Date.now() // Force re-trigger even if same element
+      });
+    }
+    onNavigate?.(section);
+  }, [onNavigate, isMobile, isTablet]);
+
   return (
     <div ref={ref} className={`desk ${className}`}>
       {/* TOP ROW */}
       <Folder
-        onClick={() => onNavigate?.('pi')}
+        onClick={(e) => handleItemClick('pi', e)}
         style={getPos('folder')}
       />
       <Terminal
-        onClick={() => onNavigate?.('research')}
+        onClick={(e) => handleItemClick('research', e)}
         isActive={terminalActive}
         style={getPos('terminal')}
       />
@@ -109,7 +124,7 @@ const Desk = forwardRef(({
       {/* BACK ROW */}
       {shouldRender('flask') && (
         <Flask
-          onClick={() => onNavigate?.('team')}
+          onClick={(e) => handleItemClick('team', e)}
           style={getPos('flask')}
         />
       )}
@@ -121,7 +136,7 @@ const Desk = forwardRef(({
       )}
       {shouldRender('microscope') && (
         <Microscope
-          onClick={() => onNavigate?.('news')}
+          onClick={(e) => handleItemClick('news', e)}
           style={getPos('microscope')}
         />
       )}
@@ -129,7 +144,7 @@ const Desk = forwardRef(({
       {/* MID ROW */}
       {shouldRender('notebook') && (
         <Notebook
-          onClick={() => onNavigate?.('publications')}
+          onClick={(e) => handleItemClick('publications', e)}
           style={getPos('notebook')}
         />
       )}
@@ -138,7 +153,7 @@ const Desk = forwardRef(({
       )}
       {shouldRender('envelope') && (
         <Envelope
-          onClick={() => onNavigate?.('contact')}
+          onClick={(e) => handleItemClick('contact', e)}
           style={getPos('envelope')}
         />
       )}
@@ -146,7 +161,7 @@ const Desk = forwardRef(({
       {/* FRONT ROW */}
       {shouldRender('petriDish') && (
         <PetriDish
-          onClick={() => onNavigate?.('research')}
+          onClick={(e) => handleItemClick('research', e)}
           style={getPos('petriDish')}
         />
       )}
@@ -155,7 +170,7 @@ const Desk = forwardRef(({
       )}
 
       {/* Hands - desktop only */}
-      {!isMobile && !isTablet && <Hands />}
+      {!isMobile && !isTablet && <Hands targetPosition={handTarget} />}
     </div>
   );
 });
