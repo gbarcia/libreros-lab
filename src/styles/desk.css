@@ -57,11 +57,11 @@
     left: 0;
     width: 100%;
     height: 70vh;
-    background: linear-gradient(180deg, var(--desk-wood) 0%, var(--desk-dark) 100%);
+    background: linear-gradient(180deg, #5c4a3d 0%, #3d322a 100%);
     box-shadow:
         inset 0 2px 0 rgba(255,255,255,0.1),
         inset 0 -5px 20px rgba(0,0,0,0.2);
-    border-top: 4px solid var(--ink-black);
+    border-top: 4px solid #1a1815;
     overflow: visible;
 }
 
@@ -90,9 +90,9 @@
     width: 100%;
     height: 8px;
     background: linear-gradient(90deg,
-        var(--desk-dark) 0%,
-        var(--desk-wood) 50%,
-        var(--desk-dark) 100%
+        #3d322a 0%,
+        #5c4a3d 50%,
+        #3d322a 100%
     );
 }
 
