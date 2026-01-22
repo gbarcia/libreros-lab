@@ -131,6 +131,12 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
             opacity="0.5"
           />
 
+          {/* Finger lines */}
+          <line x1="28" y1="42" x2="28" y2="18" stroke={knuckleStroke} strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="42" y1="38" x2="42" y2="12" stroke={knuckleStroke} strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="56" y1="38" x2="56" y2="12" stroke={knuckleStroke} strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="70" y1="42" x2="70" y2="18" stroke={knuckleStroke} strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+
           {/* Shirt cuff - drawn last to appear on top */}
           <rect x="15" y="100" width="70" height="90" rx="3" fill="#fff" stroke="#1a1815" strokeWidth="2.5"/>
         </svg>
@@ -182,6 +188,12 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
             strokeWidth="1.5"
             opacity="0.5"
           />
+
+          {/* Finger lines */}
+          <line x1="28" y1="42" x2="28" y2="18" stroke={knuckleStroke} strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="42" y1="38" x2="42" y2="12" stroke={knuckleStroke} strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="56" y1="38" x2="56" y2="12" stroke={knuckleStroke} strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="70" y1="42" x2="70" y2="18" stroke={knuckleStroke} strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
 
           {/* Shirt cuff - drawn last to appear on top */}
           <rect x="15" y="100" width="70" height="90" rx="3" fill="#fff" stroke="#1a1815" strokeWidth="2.5"/>
