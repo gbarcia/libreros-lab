@@ -50,7 +50,7 @@ function App() {
       <Radio />
 
       <div className="scene-container">
-        <Masthead />
+        <Masthead onNavigate={handleNavigate} />
 
         <Desk
           ref={deskRef}

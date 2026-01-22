@@ -50,6 +50,32 @@
     display: inline-block;
 }
 
+.masthead-nav {
+    margin-top: 12px;
+}
+
+.masthead-nav button {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(0.5rem, 1vw, 0.6rem);
+    letter-spacing: 1px;
+    color: var(--ink-faded);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 4px;
+    transition: color 0.2s ease;
+}
+
+.masthead-nav button:hover {
+    color: var(--ink-black);
+}
+
+.masthead-nav .nav-separator {
+    color: var(--ink-faded);
+    margin: 0 6px;
+    opacity: 0.5;
+}
+
 /* Desk */
 .desk {
     position: absolute;
