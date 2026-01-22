@@ -55,7 +55,7 @@ const positions = {
 
     // FRONT ROW (3-15% from bottom) - Clear gap from mid row
     petriDish: { bottom: '6%', left: '28%', zIndex: 1, transform: 'rotate(12deg)' },
-    coffeeCup: { bottom: '8%', left: '55%', zIndex: 1 }
+    coffeeCup: { bottom: '5%', left: '68%', zIndex: 4 }
   },
 
   tablet: {
