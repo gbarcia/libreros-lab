@@ -8,6 +8,7 @@ import Masthead from './components/ui/Masthead';
 import ProgressBar from './components/ui/ProgressBar';
 import ScrollIndicator from './components/ui/ScrollIndicator';
 import Desk from './components/desk/Desk';
+import Radio from './components/ui/Radio';
 
 // Sections
 import PrincipalInvestigator from './sections/PrincipalInvestigator';
@@ -26,6 +27,7 @@ import './styles/globals.css';
 import './styles/desk.css';
 import './styles/sections.css';
 import './styles/responsive.css';
+import './styles/radio.css';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -197,6 +199,7 @@ function App() {
     <>
       <PaperTexture />
       <ProgressBar progress={progress} />
+      <Radio />
 
       <div className="scene-container">
         <Masthead ref={mastheadRef} />

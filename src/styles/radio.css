@@ -1,0 +1,260 @@
+/* ============================================
+   RADIO STYLES
+   Vintage turquoise radio with audio player
+   ============================================ */
+
+.radio-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 500;
+}
+
+.radio {
+    width: clamp(100px, 12vw, 140px);
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    position: relative;
+}
+
+.radio:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.radio-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Knob hover effect */
+.radio-knob:hover circle {
+    filter: brightness(1.1);
+}
+
+/* LED pulse animation */
+.radio-led-pulse {
+    animation: ledPulse 1s ease-in-out infinite;
+}
+
+@keyframes ledPulse {
+    0%, 100% {
+        opacity: 1;
+        filter: drop-shadow(0 0 3px #ff3333);
+    }
+    50% {
+        opacity: 0.6;
+        filter: drop-shadow(0 0 6px #ff3333);
+    }
+}
+
+/* Signal waves animation */
+.radio-waves {
+    position: absolute;
+    top: -5px;
+    right: 15px;
+    display: flex;
+    gap: 2px;
+    align-items: flex-end;
+}
+
+.radio-waves span {
+    width: 3px;
+    background: var(--green-terminal, #33ff33);
+    border-radius: 2px;
+    animation: wave 0.8s ease-in-out infinite;
+}
+
+.radio-waves span:nth-child(1) {
+    height: 8px;
+    animation-delay: 0s;
+}
+
+.radio-waves span:nth-child(2) {
+    height: 12px;
+    animation-delay: 0.2s;
+}
+
+.radio-waves span:nth-child(3) {
+    height: 6px;
+    animation-delay: 0.4s;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(0.5);
+    }
+}
+
+/* Popup styles */
+.radio-popup {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 220px;
+    background: var(--paper-cream, #f7f3e9);
+    border: 2px solid var(--ink-black, #1a1815);
+    border-radius: 8px;
+    box-shadow: 4px 4px 0 var(--ink-black, #1a1815);
+    padding: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    animation: popupSlide 0.2s ease-out;
+}
+
+@keyframes popupSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.radio-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--ink-faded, #3d3a35);
+}
+
+.radio-popup-title {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--ink-black, #1a1815);
+    font-weight: 600;
+}
+
+.radio-popup-close {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: var(--ink-faded, #3d3a35);
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.radio-popup-close:hover {
+    color: var(--red-stamp, #c23b22);
+}
+
+.radio-popup-stations {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.radio-station {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.radio-station:hover {
+    background: var(--paper-aged, #e8e0cc);
+}
+
+.radio-station.active {
+    background: #48D1CC20;
+    border: 1px solid #48D1CC;
+}
+
+.radio-station-indicator {
+    color: #48D1CC;
+    font-size: 0.8rem;
+}
+
+.radio-station-freq {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--ink-black, #1a1815);
+    min-width: 55px;
+}
+
+.radio-station-name {
+    font-size: 0.6rem;
+    color: var(--ink-faded, #3d3a35);
+}
+
+.radio-popup-volume {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 8px;
+    border-top: 1px solid var(--ink-faded, #3d3a35);
+}
+
+.radio-volume-label {
+    font-size: 0.55rem;
+    letter-spacing: 1px;
+    color: var(--ink-faded, #3d3a35);
+}
+
+.radio-volume-slider {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--paper-aged, #e8e0cc);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.radio-volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: #48D1CC;
+    border: 2px solid var(--ink-black, #1a1815);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.radio-volume-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: #48D1CC;
+    border: 2px solid var(--ink-black, #1a1815);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.radio-popup-hint {
+    margin-top: 10px;
+    font-size: 0.5rem;
+    color: var(--ink-faded, #3d3a35);
+    text-align: center;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .radio-container {
+        top: 10px;
+        right: 10px;
+    }
+
+    .radio {
+        width: clamp(80px, 15vw, 100px);
+    }
+
+    .radio-popup {
+        width: 180px;
+        right: -10px;
+    }
+}
