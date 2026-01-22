@@ -49,7 +49,7 @@ const positions = {
     microscope: { bottom: '8%', left: '18%', zIndex: 3 },
 
     // MID ROW (28-42% from bottom) - Clear gap from back row
-    notebook: { bottom: '30%', left: '22%', zIndex: 3, transform: 'rotate(4deg)' },
+    notebook: { top: '8%', left: '18%', zIndex: 4, transform: 'rotate(4deg)' },
     pen: { bottom: '38%', left: '50%', zIndex: 2, transform: 'rotate(-32deg)' },
     envelope: { bottom: '18%', right: '5%', zIndex: 4, transform: 'rotate(7deg)' },
 
