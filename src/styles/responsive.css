@@ -39,7 +39,13 @@
     }
 
     .masthead {
-        top: 10px;
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        background: var(--paper-cream);
+        padding: 15px 20px 20px 20px;
+        z-index: 50;
     }
 
     .masthead h1 {
