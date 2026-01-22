@@ -6,8 +6,8 @@ const CoffeeCup = forwardRef(({ className = '', style = {} }, ref) => {
       ref={ref}
       className={`coffee-cup desk-item ${className}`}
       style={{
-        width: 'clamp(50px, 6vw, 80px)',
-        height: 'clamp(60px, 8vw, 100px)',
+        width: 'clamp(65px, 7.8vw, 104px)',
+        height: 'clamp(78px, 10.4vw, 130px)',
         ...style
       }}
     >
@@ -16,77 +16,6 @@ const CoffeeCup = forwardRef(({ className = '', style = {} }, ref) => {
         xmlns="http://www.w3.org/2000/svg"
         style={{ width: '100%', height: '100%' }}
       >
-        {/* Steam animation */}
-        <g className="coffee-steam-svg">
-          <path
-            d="M 20 18 Q 18 12, 20 6"
-            fill="none"
-            stroke="#8a8a8a"
-            strokeWidth="2"
-            strokeLinecap="round"
-            opacity="0.4"
-          >
-            <animate
-              attributeName="d"
-              values="M 20 18 Q 18 12, 20 6;M 20 18 Q 22 12, 20 6;M 20 18 Q 18 12, 20 6"
-              dur="2s"
-              repeatCount="indefinite"
-            />
-            <animate
-              attributeName="opacity"
-              values="0.4;0.2;0.4"
-              dur="2s"
-              repeatCount="indefinite"
-            />
-          </path>
-          <path
-            d="M 30 16 Q 28 10, 30 4"
-            fill="none"
-            stroke="#8a8a8a"
-            strokeWidth="2"
-            strokeLinecap="round"
-            opacity="0.5"
-          >
-            <animate
-              attributeName="d"
-              values="M 30 16 Q 28 10, 30 4;M 30 16 Q 32 10, 30 4;M 30 16 Q 28 10, 30 4"
-              dur="2.5s"
-              repeatCount="indefinite"
-              begin="0.3s"
-            />
-            <animate
-              attributeName="opacity"
-              values="0.5;0.25;0.5"
-              dur="2.5s"
-              repeatCount="indefinite"
-              begin="0.3s"
-            />
-          </path>
-          <path
-            d="M 40 18 Q 42 12, 40 6"
-            fill="none"
-            stroke="#8a8a8a"
-            strokeWidth="2"
-            strokeLinecap="round"
-            opacity="0.35"
-          >
-            <animate
-              attributeName="d"
-              values="M 40 18 Q 42 12, 40 6;M 40 18 Q 38 12, 40 6;M 40 18 Q 42 12, 40 6"
-              dur="2.2s"
-              repeatCount="indefinite"
-              begin="0.6s"
-            />
-            <animate
-              attributeName="opacity"
-              values="0.35;0.15;0.35"
-              dur="2.2s"
-              repeatCount="indefinite"
-              begin="0.6s"
-            />
-          </path>
-        </g>
-
         {/* Cup body */}
         <path
           d="M 8 22 L 12 70 Q 14 75, 30 75 Q 46 75, 48 70 L 52 22 Z"
@@ -95,16 +24,14 @@ const CoffeeCup = forwardRef(({ className = '', style = {} }, ref) => {
           strokeWidth="2.5"
         />
 
-        {/* Coffee inside */}
+        {/* Cup interior - white/empty */}
         <path
           d="M 10 26 L 13 65 Q 15 70, 30 70 Q 45 70, 47 65 L 50 26 Z"
-          fill="#4a3728"
-          opacity="0.9"
+          fill="#f5f5f5"
         />
 
-        {/* Coffee surface highlight */}
-        <ellipse cx="30" cy="26" rx="20" ry="4" fill="#5c4a3d" />
-        <ellipse cx="28" cy="25" rx="8" ry="2" fill="#6d5a4a" opacity="0.5" />
+        {/* Interior shadow */}
+        <ellipse cx="30" cy="26" rx="20" ry="4" fill="#eeeeee" />
 
         {/* Cup rim */}
         <ellipse
