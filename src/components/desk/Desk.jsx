@@ -42,11 +42,11 @@ const positions = {
     folder: { top: '5%', left: '2%', zIndex: 5 },
     terminal: { top: '2%', right: '2%', zIndex: 5 },
 
-    // BACK ROW (58-70% from bottom) - Well above middle items
-    flask: { bottom: '58%', left: '5%', zIndex: 4, transform: 'rotate(-5deg)' },
-    testTubes: { bottom: '62%', left: '24%', zIndex: 2, transform: 'rotate(3deg)' },
-    pipette: { bottom: '60%', left: '52%', zIndex: 2, transform: 'rotate(-18deg)' },
-    microscope: { bottom: '55%', right: '10%', zIndex: 3 },
+    // BACK ROW (48-58% from bottom) - Lowered to be more visible
+    flask: { bottom: '48%', left: '5%', zIndex: 4, transform: 'rotate(-5deg)' },
+    testTubes: { bottom: '52%', left: '38%', zIndex: 2, transform: 'rotate(3deg)' },
+    pipette: { bottom: '50%', left: '58%', zIndex: 2, transform: 'rotate(-18deg)' },
+    microscope: { bottom: '45%', right: '8%', zIndex: 3 },
 
     // MID ROW (28-42% from bottom) - Clear gap from back row
     notebook: { bottom: '30%', left: '22%', zIndex: 3, transform: 'rotate(4deg)' },
