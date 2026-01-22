@@ -544,6 +544,14 @@
     animation: microscopeFloat 3s ease-in-out infinite;
 }
 
+/* Microscope 30% larger on desktop */
+@media (min-width: 768px) {
+    .microscope {
+        width: clamp(130px, 17vw, 220px) !important;
+        height: clamp(182px, 23vw, 300px) !important;
+    }
+}
+
 @keyframes microscopeFloat {
     0%, 100% {
         transform: translateY(0) rotate(0deg);
