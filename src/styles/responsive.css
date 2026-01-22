@@ -61,9 +61,47 @@
         box-shadow: none;
     }
 
-    /* Hide ALL desk items - only show table, mat and hands */
+    /* Hide most desk items */
     .desk-item {
         display: none !important;
+    }
+
+    /* Hide scattered papers on mobile */
+    .scattered-papers {
+        display: none !important;
+    }
+
+    /* Show coffee cup, microscope and terminal on mobile */
+    .coffee-cup,
+    .microscope,
+    .terminal {
+        display: block !important;
+        pointer-events: none;
+    }
+
+    /* Position coffee cup on mobile */
+    .coffee-cup {
+        width: 50px !important;
+        left: 15% !important;
+        top: 25% !important;
+    }
+
+    /* Position microscope on mobile */
+    .microscope {
+        width: 45px !important;
+        left: 45% !important;
+        top: 22% !important;
+        animation: none !important;
+    }
+
+    /* Position terminal on mobile */
+    .terminal {
+        width: 100px !important;
+        height: 80px !important;
+        right: 10% !important;
+        left: auto !important;
+        top: 20% !important;
+        transform: rotate(0deg) !important;
     }
 
     /* Hide hands on mobile */
