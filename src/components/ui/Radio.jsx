@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 
 const tracks = [
-  { id: 1, name: 'Ambient Lab', freq: '88.1 FM', src: '/1.m4a' },
-  { id: 2, name: 'Focus Mode', freq: '91.5 FM', src: '/2.m4a' }
+  { id: 1, name: 'Focus Mode', freq: '91.5 FM', src: '/2.m4a' },    // Corto primero
+  { id: 2, name: 'Ambient Lab', freq: '88.1 FM', src: '/1.m4a' }    // Largo después
 ];
 
 const Radio = () => {
@@ -59,6 +59,18 @@ const Radio = () => {
     }, 100);
   };
 
+  // Auto-switch to next track when current ends
+  const handleTrackEnd = () => {
+    const nextTrack = (currentTrack + 1) % tracks.length;
+    setCurrentTrack(nextTrack);
+
+    setTimeout(() => {
+      if (audioRef.current) {
+        audioRef.current.play().catch(console.error);
+      }
+    }, 100);
+  };
+
   // Close popup when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -102,8 +114,8 @@ const Radio = () => {
       <audio
         ref={audioRef}
         src={tracks[currentTrack].src}
-        loop
         preload="auto"
+        onEnded={handleTrackEnd}
       />
 
       {/* Radio SVG */}
