@@ -11,6 +11,8 @@ import TestTubes from './TestTubes';
 import Pipette from './Pipette';
 import PetriDish from './PetriDish';
 import ScatteredPapers from './ScatteredPapers';
+import ContactPapers from './ContactPapers';
+import LabPapers from './LabPapers';
 import Hands from '../ui/Hands';
 
 /*
@@ -59,7 +61,13 @@ const positions = {
     coffeeCup: { bottom: '42%', left: '38%', zIndex: 2 },
 
     // Scattered papers beneath folder and notebook
-    scatteredPapers: { top: '12%', left: '0%', zIndex: 2 }
+    scatteredPapers: { top: '12%', left: '0%', zIndex: 2 },
+
+    // Papers behind envelope (contact)
+    contactPapers: { bottom: '22%', right: '2%', zIndex: 3 },
+
+    // Papers behind test tubes
+    labPapers: { bottom: '8%', left: '65%', zIndex: 3 }
   },
 
   tablet: {
@@ -123,6 +131,16 @@ const Desk = forwardRef(({
       {/* Scattered papers - behind folder and notebook */}
       {shouldRender('scatteredPapers') && (
         <ScatteredPapers style={getPos('scatteredPapers')} />
+      )}
+
+      {/* Papers behind envelope */}
+      {shouldRender('contactPapers') && (
+        <ContactPapers style={getPos('contactPapers')} />
+      )}
+
+      {/* Papers behind test tubes */}
+      {shouldRender('labPapers') && (
+        <LabPapers style={getPos('labPapers')} />
       )}
 
       {/* TOP ROW */}
