@@ -111,17 +111,18 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
             strokeWidth="2.5"
           />
 
-          {/* Thumb - small oval (fill only) */}
+          {/* Thumb - wider ellipse rotated for natural look */}
           <ellipse
-            cx="88"
-            cy="70"
-            rx="12"
-            ry="18"
+            cx="90"
+            cy="68"
+            rx="18"
+            ry="12"
             fill={handFill}
+            transform="rotate(-25 90 68)"
           />
-          {/* Thumb outer border only (right half) */}
+          {/* Thumb outer border only (outer edge) */}
           <path
-            d="M 88 52 A 12 18 0 0 1 88 88"
+            d="M 78 55 Q 105 60, 102 80 Q 98 90, 85 82"
             fill="none"
             stroke="#1a1815"
             strokeWidth="2.5"
@@ -168,17 +169,18 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
             strokeWidth="2.5"
           />
 
-          {/* Thumb - small oval (mirrored, fill only) */}
+          {/* Thumb - wider ellipse rotated for natural look (mirrored) */}
           <ellipse
-            cx="12"
-            cy="70"
-            rx="12"
-            ry="18"
+            cx="10"
+            cy="68"
+            rx="18"
+            ry="12"
             fill={handFill}
+            transform="rotate(25 10 68)"
           />
-          {/* Thumb outer border only (left half) */}
+          {/* Thumb outer border only (outer edge, mirrored) */}
           <path
-            d="M 12 52 A 12 18 0 0 0 12 88"
+            d="M 22 55 Q -5 60, -2 80 Q 2 90, 15 82"
             fill="none"
             stroke="#1a1815"
             strokeWidth="2.5"
