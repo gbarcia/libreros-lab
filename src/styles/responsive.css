@@ -66,9 +66,14 @@
         display: none !important;
     }
 
-    /* Hide scattered papers on mobile */
+    /* Show scattered papers on mobile (repositioned) */
     .scattered-papers {
-        display: none !important;
+        display: block !important;
+        width: 90% !important;
+        left: 5% !important;
+        top: 18% !important;
+        height: auto !important;
+        opacity: 0.7;
     }
 
     /* Show coffee cup, microscope and terminal on mobile */
