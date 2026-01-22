@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 const BREAKPOINTS = {
-  mobile: 480,
-  tablet: 768,
-  desktop: 1024,
+  mobile: 768,      // < 768px = mobile
+  tablet: 1024,     // 768-1023px = tablet
+  desktop: 1024,    // >= 1024px = desktop
   largeDesktop: 1400
 };
 
@@ -40,10 +40,10 @@ export function useResponsive() {
     };
   }, []);
 
-  const isMobile = windowSize.width <= BREAKPOINTS.mobile;
-  const isTablet = windowSize.width > BREAKPOINTS.mobile && windowSize.width <= BREAKPOINTS.tablet;
-  const isDesktop = windowSize.width > BREAKPOINTS.tablet;
-  const isLargeDesktop = windowSize.width > BREAKPOINTS.largeDesktop;
+  const isMobile = windowSize.width < BREAKPOINTS.mobile;  // < 768px
+  const isTablet = windowSize.width >= BREAKPOINTS.mobile && windowSize.width < BREAKPOINTS.tablet;  // 768-1023px
+  const isDesktop = windowSize.width >= BREAKPOINTS.desktop;  // >= 1024px
+  const isLargeDesktop = windowSize.width >= BREAKPOINTS.largeDesktop;  // >= 1400px
 
   return {
     windowSize,

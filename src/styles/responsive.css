@@ -4,34 +4,9 @@
    ============================================ */
 
 /* Tablet */
-@media (max-width: 768px) {
+@media (max-width: 1023px) and (min-width: 768px) {
     .desk {
         height: 65vh;
-    }
-
-    .folder {
-        top: 5%;
-        left: 3%;
-    }
-
-    .terminal {
-        top: 3%;
-        right: 2%;
-    }
-
-    .notebook {
-        bottom: 35%;
-        left: 25%;
-    }
-
-    .coffee-cup {
-        bottom: 25%;
-        right: 25%;
-    }
-
-    .pen {
-        bottom: 30%;
-        left: 50%;
     }
 
     .hands-container {
@@ -42,15 +17,18 @@
         width: clamp(80px, 12vw, 130px);
     }
 
-    /* Hide some decorative elements on tablet */
-    .flask,
-    .petri-dish {
+    /* Hide decorative elements on tablet */
+    .test-tubes,
+    .pipette,
+    .petri-dish,
+    .microscope,
+    .pen {
         display: none;
     }
 }
 
 /* Mobile */
-@media (max-width: 480px) {
+@media (max-width: 767px) {
     .masthead {
         top: 10px;
     }
@@ -63,31 +41,26 @@
         height: 55vh;
     }
 
-    /* Simplify desk layout for mobile */
+    /* Hide elements on mobile - only show Folder, Terminal, Flask, Envelope */
     .notebook,
     .pen,
     .pipette,
-    .test-tubes {
+    .test-tubes,
+    .petri-dish,
+    .microscope,
+    .coffee-cup {
         display: none;
     }
 
+    /* Adjust sizes for mobile */
     .folder {
-        top: 8%;
-        left: 5%;
         width: 120px;
         height: 150px;
     }
 
     .terminal {
-        top: 5%;
-        right: 5%;
         width: 160px;
         height: 140px;
-    }
-
-    .coffee-cup {
-        bottom: 35%;
-        right: 15%;
     }
 
     /* Hide hands on mobile */
@@ -141,16 +114,6 @@
 @media (min-width: 1400px) {
     .desk {
         height: 75vh;
-    }
-
-    .folder {
-        width: 250px;
-        height: 320px;
-    }
-
-    .terminal {
-        width: 450px;
-        height: 380px;
     }
 
     .content-panel {

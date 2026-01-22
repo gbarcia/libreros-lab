@@ -143,7 +143,8 @@ function App() {
           ref={deskRef}
           onNavigate={handleNavigate}
           terminalActive={terminalActive}
-          isMobile={isMobile || isTablet}
+          isMobile={isMobile}
+          isTablet={isTablet}
         />
 
         <ScrollIndicator ref={scrollIndicatorRef} />
