@@ -44,8 +44,8 @@ const Envelope = forwardRef(({ onClick, className = '', style = {} }, ref) => {
           cx="60"
           cy="40"
           r="12"
-          fill="#c23b22"
-          stroke="#8b1a1a"
+          fill="#002fa7"
+          stroke="#001d6c"
           strokeWidth="1.5"
         />
 
