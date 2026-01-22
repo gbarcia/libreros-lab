@@ -5,7 +5,7 @@ const TestTubes = forwardRef(({ className = '', style = {} }, ref) => {
   return (
     <div
       ref={ref}
-      className={`desk-item ${className}`}
+      className={`test-tubes desk-item ${className}`}
       style={{
         width: 'clamp(60px, 8vw, 100px)',
         height: 'clamp(70px, 9vw, 110px)',

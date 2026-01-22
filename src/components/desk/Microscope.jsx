@@ -5,7 +5,7 @@ const Microscope = forwardRef(({ onClick, className = '', style = {} }, ref) => 
   return (
     <div
       ref={ref}
-      className={`desk-item clickable ${className}`}
+      className={`microscope desk-item clickable ${className}`}
       onClick={onClick}
       style={{
         width: 'clamp(70px, 9vw, 120px)',

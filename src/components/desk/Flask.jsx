@@ -5,7 +5,7 @@ const Flask = forwardRef(({ onClick, className = '', style = {} }, ref) => {
   return (
     <div
       ref={ref}
-      className={`desk-item clickable ${className}`}
+      className={`flask desk-item clickable ${className}`}
       onClick={onClick}
       style={{
         width: 'clamp(60px, 8vw, 100px)',

@@ -5,7 +5,7 @@ const Envelope = forwardRef(({ onClick, className = '', style = {} }, ref) => {
   return (
     <div
       ref={ref}
-      className={`desk-item clickable ${className}`}
+      className={`envelope desk-item clickable ${className}`}
       onClick={onClick}
       style={{
         width: 'clamp(80px, 10vw, 130px)',

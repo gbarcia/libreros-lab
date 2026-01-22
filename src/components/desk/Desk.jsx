@@ -12,40 +12,68 @@ import Pipette from './Pipette';
 import PetriDish from './PetriDish';
 import Hands from '../ui/Hands';
 
-// Position system based on 4x3 zone grid
-// Prevents overlapping by assigning each element to a specific zone
+/*
+ * DESK LAYOUT - COLLISION-FREE GRID
+ *
+ * Designed for 1200px viewport, 70vh desk (~560px)
+ *
+ * 4 Columns with gaps:
+ *   A: 0-20%    (0-240px)
+ *   B: 22-42%   (264-504px)
+ *   C: 48-68%   (576-816px)
+ *   D: 75-100%  (900-1200px)
+ *
+ * 4 Rows (from bottom):
+ *   TOP:  positioned from top (Folder, Terminal)
+ *   BACK: 58-70% from bottom
+ *   MID:  28-42% from bottom
+ *   FRONT: 3-15% from bottom
+ *
+ *        A          B          C          D
+ * TOP   FOLDER     ---        ---      TERMINAL
+ * BACK  Flask    TestTubes  Pipette   Microscope
+ * MID   ---      Notebook     Pen      Envelope
+ * FRONT ---      PetriDish  CoffeeCup    ---
+ */
+
 const positions = {
   desktop: {
-    // TOP ROW (0-35% from top)
-    folder: { top: '8%', left: '3%', zIndex: 5 },
-    terminal: { top: '3%', right: '3%', zIndex: 5 },
-    // MIDDLE ROW (35-65% from top, or 35-65% from bottom)
-    flask: { bottom: '42%', left: '8%', zIndex: 4 },
-    notebook: { bottom: '32%', left: '30%', zIndex: 3, transform: 'rotate(5deg)' },
-    testTubes: { bottom: '52%', left: '24%', zIndex: 2, transform: 'rotate(5deg)' },
-    pen: { bottom: '25%', left: '54%', zIndex: 2, transform: 'rotate(-35deg)' },
-    pipette: { bottom: '48%', left: '65%', zIndex: 2, transform: 'rotate(-20deg)' },
-    envelope: { bottom: '42%', right: '5%', zIndex: 4, transform: 'rotate(8deg)' },
-    microscope: { bottom: '22%', right: '18%', zIndex: 3 },
-    // BOTTOM ROW (65-100% from top, or 0-35% from bottom)
-    coffeeCup: { bottom: '10%', left: '58%', zIndex: 1 },
-    petriDish: { bottom: '6%', left: '38%', zIndex: 1, transform: 'rotate(10deg)' }
+    // TOP - Anchor items
+    folder: { top: '5%', left: '2%', zIndex: 5 },
+    terminal: { top: '2%', right: '2%', zIndex: 5 },
+
+    // BACK ROW (58-70% from bottom) - Well above middle items
+    flask: { bottom: '58%', left: '5%', zIndex: 4, transform: 'rotate(-5deg)' },
+    testTubes: { bottom: '62%', left: '24%', zIndex: 2, transform: 'rotate(3deg)' },
+    pipette: { bottom: '60%', left: '52%', zIndex: 2, transform: 'rotate(-18deg)' },
+    microscope: { bottom: '55%', right: '10%', zIndex: 3 },
+
+    // MID ROW (28-42% from bottom) - Clear gap from back row
+    notebook: { bottom: '30%', left: '22%', zIndex: 3, transform: 'rotate(4deg)' },
+    pen: { bottom: '38%', left: '50%', zIndex: 2, transform: 'rotate(-32deg)' },
+    envelope: { bottom: '32%', right: '6%', zIndex: 4, transform: 'rotate(7deg)' },
+
+    // FRONT ROW (3-15% from bottom) - Clear gap from mid row
+    petriDish: { bottom: '6%', left: '28%', zIndex: 1, transform: 'rotate(12deg)' },
+    coffeeCup: { bottom: '8%', left: '55%', zIndex: 1 }
   },
+
   tablet: {
-    // Simplified layout - 6 elements only
-    folder: { top: '5%', left: '3%', zIndex: 5 },
+    // 6 elements with generous spacing
+    folder: { top: '4%', left: '3%', zIndex: 5 },
     terminal: { top: '3%', right: '3%', zIndex: 5 },
-    flask: { bottom: '38%', left: '10%', zIndex: 4, transform: 'rotate(-3deg)' },
-    notebook: { bottom: '30%', left: '35%', zIndex: 3, transform: 'rotate(5deg)' },
-    envelope: { bottom: '38%', right: '8%', zIndex: 4, transform: 'rotate(8deg)' },
-    coffeeCup: { bottom: '12%', right: '35%', zIndex: 1 }
+    flask: { bottom: '48%', left: '8%', zIndex: 4, transform: 'rotate(-4deg)' },
+    notebook: { bottom: '25%', left: '32%', zIndex: 3, transform: 'rotate(3deg)' },
+    envelope: { bottom: '40%', right: '8%', zIndex: 4, transform: 'rotate(6deg)' },
+    coffeeCup: { bottom: '8%', left: '45%', zIndex: 1 }
   },
+
   mobile: {
-    // Minimal layout - 4 elements in 2x2 grid
-    folder: { top: '5%', left: '5%', zIndex: 5 },
-    terminal: { top: '3%', right: '3%', zIndex: 5 },
-    flask: { bottom: '18%', left: '8%', zIndex: 4, transform: 'rotate(-3deg)' },
-    envelope: { bottom: '18%', right: '8%', zIndex: 4, transform: 'rotate(8deg)' }
+    // 4 elements in clear 2x2 layout
+    folder: { top: '4%', left: '5%', zIndex: 5 },
+    terminal: { top: '4%', right: '5%', zIndex: 5 },
+    flask: { bottom: '12%', left: '8%', zIndex: 4, transform: 'rotate(-4deg)' },
+    envelope: { bottom: '12%', right: '8%', zIndex: 4, transform: 'rotate(6deg)' }
   }
 };
 
@@ -57,88 +85,76 @@ const Desk = forwardRef(({
   className = ''
 }, ref) => {
 
-  // Helper to get position for current breakpoint
   const getPos = (element) => {
-    if (isMobile) return positions.mobile[element] || {};
-    if (isTablet) return positions.tablet[element] || {};
-    return positions.desktop[element] || {};
+    if (isMobile) return positions.mobile[element] || null;
+    if (isTablet) return positions.tablet[element] || null;
+    return positions.desktop[element] || null;
   };
 
-  // Determine which elements to show based on breakpoint
-  const showElement = (element) => {
-    if (isMobile) return !!positions.mobile[element];
-    if (isTablet) return !!positions.tablet[element];
-    return !!positions.desktop[element];
-  };
+  const shouldRender = (element) => getPos(element) !== null;
 
   return (
     <div ref={ref} className={`desk ${className}`}>
-      {/* === TOP ROW: Main navigation items === */}
+      {/* TOP ROW */}
       <Folder
         onClick={() => onNavigate?.('pi')}
         style={getPos('folder')}
       />
-
       <Terminal
         onClick={() => onNavigate?.('research')}
         isActive={terminalActive}
         style={getPos('terminal')}
       />
 
-      {/* === MIDDLE ROW: Secondary items === */}
-      {showElement('notebook') && (
-        <Notebook
-          onClick={() => onNavigate?.('publications')}
-          style={getPos('notebook')}
-        />
-      )}
-
-      {showElement('flask') && (
+      {/* BACK ROW */}
+      {shouldRender('flask') && (
         <Flask
           onClick={() => onNavigate?.('team')}
           style={getPos('flask')}
         />
       )}
-
-      {showElement('microscope') && (
+      {shouldRender('testTubes') && (
+        <TestTubes style={getPos('testTubes')} />
+      )}
+      {shouldRender('pipette') && (
+        <Pipette style={getPos('pipette')} />
+      )}
+      {shouldRender('microscope') && (
         <Microscope
           onClick={() => onNavigate?.('news')}
           style={getPos('microscope')}
         />
       )}
 
-      {showElement('envelope') && (
+      {/* MID ROW */}
+      {shouldRender('notebook') && (
+        <Notebook
+          onClick={() => onNavigate?.('publications')}
+          style={getPos('notebook')}
+        />
+      )}
+      {shouldRender('pen') && (
+        <Pen style={getPos('pen')} />
+      )}
+      {shouldRender('envelope') && (
         <Envelope
           onClick={() => onNavigate?.('contact')}
           style={getPos('envelope')}
         />
       )}
 
-      {/* === DECORATIVE ITEMS === */}
-      {showElement('coffeeCup') && (
-        <CoffeeCup style={getPos('coffeeCup')} />
-      )}
-
-      {showElement('pen') && (
-        <Pen style={getPos('pen')} />
-      )}
-
-      {showElement('testTubes') && (
-        <TestTubes style={getPos('testTubes')} />
-      )}
-
-      {showElement('pipette') && (
-        <Pipette style={getPos('pipette')} />
-      )}
-
-      {showElement('petriDish') && (
+      {/* FRONT ROW */}
+      {shouldRender('petriDish') && (
         <PetriDish
           onClick={() => onNavigate?.('research')}
           style={getPos('petriDish')}
         />
       )}
+      {shouldRender('coffeeCup') && (
+        <CoffeeCup style={getPos('coffeeCup')} />
+      )}
 
-      {/* Hands - only on desktop */}
+      {/* Hands - desktop only */}
       {!isMobile && !isTablet && <Hands />}
     </div>
   );
