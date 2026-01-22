@@ -82,6 +82,7 @@ const Desk = forwardRef(({
   terminalActive = false,
   isMobile = false,
   isTablet = false,
+  activePanel = null,
   className = ''
 }, ref) => {
   const [handTarget, setHandTarget] = useState(null);
@@ -170,7 +171,12 @@ const Desk = forwardRef(({
       )}
 
       {/* Hands - desktop only */}
-      {!isMobile && !isTablet && <Hands targetPosition={handTarget} />}
+      {!isMobile && !isTablet && (
+        <Hands
+          targetPosition={handTarget}
+          isActive={activePanel !== null}
+        />
+      )}
     </div>
   );
 });

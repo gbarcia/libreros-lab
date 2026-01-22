@@ -2,70 +2,82 @@ import { forwardRef, useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 // Simplified oval hands with extending arms
-const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
+const Hands = forwardRef(({ className = '', targetPosition = null, isActive = false }, ref) => {
   const [hasGloves, setHasGloves] = useState(false);
   const leftHandRef = useRef(null);
   const rightHandRef = useRef(null);
   const leftArmRef = useRef(null);
   const rightArmRef = useRef(null);
   const containerRef = useRef(null);
+  const animationRef = useRef(null);
 
   const toggleGloves = (e) => {
     e.stopPropagation();
     setHasGloves(!hasGloves);
   };
 
-  // Animate hands toward target when clicked
+  // Animate hands toward target when clicked, return when closed
   useEffect(() => {
-    if (!targetPosition || !containerRef.current) return;
+    if (!containerRef.current) return;
 
-    const container = containerRef.current;
-    const containerRect = container.getBoundingClientRect();
-    const containerCenterX = containerRect.left + containerRect.width / 2;
-    const containerCenterY = containerRect.top + containerRect.height / 2;
+    // Kill any existing animation
+    if (animationRef.current) {
+      animationRef.current.kill();
+    }
 
-    // Calculate offset from center to target
-    const offsetX = targetPosition.x - containerCenterX;
-    const offsetY = targetPosition.y - containerCenterY;
-
-    // Arm length based on distance
-    const distance = Math.sqrt(offsetX * offsetX + offsetY * offsetY);
-    const armLength = Math.min(distance * 0.8, 400);
-
-    // Animate both hands and arms
     const tl = gsap.timeline();
+    animationRef.current = tl;
 
-    // Move hands toward target
-    tl.to([leftHandRef.current, rightHandRef.current], {
-      x: offsetX * 0.6,
-      y: offsetY * 0.7,
-      duration: 0.4,
-      ease: 'power2.out'
-    });
+    if (targetPosition && isActive) {
+      // Calculate position
+      const container = containerRef.current;
+      const containerRect = container.getBoundingClientRect();
+      const containerCenterX = containerRect.left + containerRect.width / 2;
+      const containerCenterY = containerRect.top + containerRect.height / 2;
 
-    // Extend arms
-    tl.to([leftArmRef.current, rightArmRef.current], {
-      height: armLength,
-      duration: 0.4,
-      ease: 'power2.out'
-    }, '<');
+      const offsetX = targetPosition.x - containerCenterX;
+      const offsetY = targetPosition.y - containerCenterY;
 
-    // Return to original position after delay
-    tl.to([leftHandRef.current, rightHandRef.current], {
-      x: 0,
-      y: 0,
-      duration: 0.6,
-      ease: 'power2.inOut',
-      delay: 0.3
-    });
+      // Arm length based on distance (negative Y because going up)
+      const distance = Math.abs(offsetY) + 100;
+      const armLength = Math.min(distance, 500);
 
-    tl.to([leftArmRef.current, rightArmRef.current], {
-      height: 80,
-      duration: 0.6,
-      ease: 'power2.inOut'
-    }, '<');
+      // Move hands toward target and extend arms
+      tl.to([leftHandRef.current, rightHandRef.current], {
+        x: offsetX * 0.5,
+        y: offsetY * 0.8,
+        duration: 0.5,
+        ease: 'power2.out'
+      });
 
-  }, [targetPosition]);
+      tl.to([leftArmRef.current, rightArmRef.current], {
+        height: armLength,
+        duration: 0.5,
+        ease: 'power2.out'
+      }, '<');
+
+    } else {
+      // Return to original position
+      tl.to([leftHandRef.current, rightHandRef.current], {
+        x: 0,
+        y: 0,
+        duration: 0.5,
+        ease: 'power2.inOut'
+      });
+
+      tl.to([leftArmRef.current, rightArmRef.current], {
+        height: 60,
+        duration: 0.5,
+        ease: 'power2.inOut'
+      }, '<');
+    }
+
+    return () => {
+      if (animationRef.current) {
+        animationRef.current.kill();
+      }
+    };
+  }, [targetPosition, isActive]);
 
   // Colors
   const skinColor = '#e8c9a8';
@@ -84,14 +96,8 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
         else ref.current = el;
       }
     }} className={`hands-container ${className}`}>
-      {/* Left Arm */}
-      <div className="arm-wrapper left-arm">
-        <div
-          ref={leftArmRef}
-          className="arm"
-          style={{ backgroundColor: skinColor }}
-        />
-        {/* Left Hand */}
+      {/* Left Hand with Arm */}
+      <div className="hand-with-arm">
         <svg
           ref={leftHandRef}
           className="hand-svg hand-clickable"
@@ -139,16 +145,16 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
           {/* Shirt cuff - drawn last to appear on top */}
           <rect x="15" y="100" width="70" height="30" rx="3" fill="#fff" stroke="#1a1815" strokeWidth="2.5"/>
         </svg>
-      </div>
-
-      {/* Right Arm */}
-      <div className="arm-wrapper right-arm">
+        {/* Left Arm - extends downward */}
         <div
-          ref={rightArmRef}
+          ref={leftArmRef}
           className="arm"
           style={{ backgroundColor: skinColor }}
         />
-        {/* Right Hand */}
+      </div>
+
+      {/* Right Hand with Arm */}
+      <div className="hand-with-arm">
         <svg
           ref={rightHandRef}
           className="hand-svg hand-clickable"
@@ -196,6 +202,12 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
           {/* Shirt cuff - drawn last to appear on top */}
           <rect x="15" y="100" width="70" height="30" rx="3" fill="#fff" stroke="#1a1815" strokeWidth="2.5"/>
         </svg>
+        {/* Right Arm - extends downward */}
+        <div
+          ref={rightArmRef}
+          className="arm"
+          style={{ backgroundColor: skinColor }}
+        />
       </div>
     </div>
   );

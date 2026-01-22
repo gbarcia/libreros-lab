@@ -393,8 +393,8 @@
     filter: drop-shadow(2px 3px 4px rgba(0,0,0,0.4));
 }
 
-/* Arm wrappers */
-.arm-wrapper {
+/* Hand with arm wrapper */
+.hand-with-arm {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -402,13 +402,11 @@
 }
 
 .arm {
-    width: 50px;
-    height: 80px;
+    width: 55px;
+    height: 60px;
     border-left: 2.5px solid #1a1815;
     border-right: 2.5px solid #1a1815;
-    position: absolute;
-    bottom: 0;
-    transform: translateY(100%);
+    margin-top: -10px;
     z-index: -1;
 }
 
