@@ -32,6 +32,11 @@ import './styles/radio.css';
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
+// Disable browser scroll restoration to prevent race conditions
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
 function App() {
   const { isMobile, isTablet } = useResponsive();
   const { activePanel, navigateTo, closePanel } = useNavigation();
@@ -172,7 +177,7 @@ function App() {
         }
       }
 
-      // Dim desk at end
+      // Dim desk at end (only opacity and filter, never touch background)
       if (deskRef.current) {
         tl.to(deskRef.current, {
           opacity: 0.5,
@@ -182,8 +187,47 @@ function App() {
       }
     });
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      // Ensure desk background is restored after GSAP cleanup
+      if (deskRef.current) {
+        deskRef.current.style.background = 'linear-gradient(180deg, #5c4a3d 0%, #3d322a 100%)';
+      }
+    };
   }, [isMobile, isTablet]);
+
+  // Reset scroll and GSAP state on mount to prevent corruption
+  useEffect(() => {
+    // Force scroll to top
+    window.scrollTo(0, 0);
+
+    // Kill all ScrollTriggers to start fresh
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+    // Clear any lingering GSAP inline styles on desk
+    if (deskRef.current) {
+      gsap.set(deskRef.current, { clearProps: 'opacity,filter' });
+      // Ensure background is always set
+      deskRef.current.style.background = 'linear-gradient(180deg, #5c4a3d 0%, #3d322a 100%)';
+    }
+
+    // Handle bfcache (back-forward cache) restoration
+    const handlePageShow = (event) => {
+      if (event.persisted) {
+        // Page was restored from bfcache, reset everything
+        window.scrollTo(0, 0);
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        ScrollTrigger.refresh(true);
+        if (deskRef.current) {
+          deskRef.current.style.background = 'linear-gradient(180deg, #5c4a3d 0%, #3d322a 100%)';
+          gsap.set(deskRef.current, { clearProps: 'opacity,filter' });
+        }
+      }
+    };
+
+    window.addEventListener('pageshow', handlePageShow);
+    return () => window.removeEventListener('pageshow', handlePageShow);
+  }, []);
 
   // Refresh ScrollTrigger on resize
   useEffect(() => {
