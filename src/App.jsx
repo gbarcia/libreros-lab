@@ -36,6 +36,7 @@ function App() {
 
   const [progress, setProgress] = useState(0);
   const [terminalActive, setTerminalActive] = useState(true);
+  const [manualNavigation, setManualNavigation] = useState(false);
 
   // Refs
   const mastheadRef = useRef(null);
@@ -43,10 +44,17 @@ function App() {
   const deskRef = useRef(null);
   const handsRef = useRef(null);
 
-  // Handle navigation
+  // Handle manual navigation (click on desk items)
   const handleNavigate = useCallback((section) => {
+    setManualNavigation(true);
     navigateTo(section);
   }, [navigateTo]);
+
+  // Handle closing panel
+  const handleClosePanel = useCallback(() => {
+    setManualNavigation(false);
+    closePanel();
+  }, [closePanel]);
 
   // Determine which section should be active based on scroll progress
   const getSectionForProgress = useCallback((prog) => {
@@ -59,15 +67,17 @@ function App() {
     return 'contact';
   }, []);
 
-  // Update active section based on scroll progress
+  // Update active section based on scroll progress (only if not manually navigating)
   useEffect(() => {
+    if (manualNavigation) return;
+
     const targetSection = getSectionForProgress(progress);
     if (targetSection && targetSection !== activePanel) {
       navigateTo(targetSection);
     } else if (!targetSection && activePanel) {
       closePanel();
     }
-  }, [progress, activePanel, navigateTo, closePanel, getSectionForProgress]);
+  }, [progress, activePanel, navigateTo, closePanel, getSectionForProgress, manualNavigation]);
 
   // GSAP Scroll Animations
   useEffect(() => {
@@ -189,27 +199,27 @@ function App() {
       {/* Section Panels */}
       <PrincipalInvestigator
         isActive={activePanel === 'pi'}
-        onClose={closePanel}
+        onClose={handleClosePanel}
       />
       <Research
         isActive={activePanel === 'research'}
-        onClose={closePanel}
+        onClose={handleClosePanel}
       />
       <Publications
         isActive={activePanel === 'publications'}
-        onClose={closePanel}
+        onClose={handleClosePanel}
       />
       <Team
         isActive={activePanel === 'team'}
-        onClose={closePanel}
+        onClose={handleClosePanel}
       />
       <News
         isActive={activePanel === 'news'}
-        onClose={closePanel}
+        onClose={handleClosePanel}
       />
       <Contact
         isActive={activePanel === 'contact'}
-        onClose={closePanel}
+        onClose={handleClosePanel}
       />
 
       {/* Scroll spacer for GSAP ScrollTrigger */}
