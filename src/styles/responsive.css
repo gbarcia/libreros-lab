@@ -37,7 +37,7 @@
     }
 
     .desk {
-        height: 55vh;
+        height: 60vh;
     }
 
     /* Hide decorative elements on mobile - keep all interactive items */
@@ -49,35 +49,35 @@
         display: none;
     }
 
-    /* Adjust sizes for mobile */
+    /* Adjust sizes for mobile - smaller to fit 6 elements */
     .folder {
-        width: 100px;
-        height: 125px;
-    }
-
-    .terminal {
-        width: 140px;
-        height: 120px;
-    }
-
-    .notebook {
         width: 80px;
         height: 100px;
     }
 
-    .microscope {
-        width: 60px;
+    .terminal {
+        width: 110px;
+        height: 95px;
+    }
+
+    .notebook {
+        width: 65px;
         height: 80px;
     }
 
-    .flask {
+    .microscope {
         width: 50px;
-        height: 70px;
+        height: 65px;
+    }
+
+    .flask {
+        width: 40px;
+        height: 55px;
     }
 
     .envelope {
-        width: 70px;
-        height: 50px;
+        width: 55px;
+        height: 40px;
     }
 
     /* Hide hands on mobile */

@@ -75,12 +75,12 @@ const positions = {
 
   mobile: {
     // 6 elements in 3x2 layout - all interactive items visible
-    folder: { top: '4%', left: '5%', zIndex: 5 },
-    terminal: { top: '4%', right: '5%', zIndex: 5 },
-    notebook: { top: '38%', left: '5%', zIndex: 4, transform: 'rotate(3deg)' },
-    microscope: { top: '38%', right: '5%', zIndex: 3 },
-    flask: { bottom: '8%', left: '8%', zIndex: 4, transform: 'rotate(-4deg)' },
-    envelope: { bottom: '8%', right: '8%', zIndex: 4, transform: 'rotate(6deg)' }
+    folder: { top: '2%', left: '8%', zIndex: 5 },
+    terminal: { top: '2%', right: '8%', zIndex: 5 },
+    notebook: { top: '35%', left: '10%', zIndex: 4, transform: 'rotate(3deg)' },
+    microscope: { top: '35%', right: '10%', zIndex: 3 },
+    flask: { bottom: '5%', left: '12%', zIndex: 4, transform: 'rotate(-4deg)' },
+    envelope: { bottom: '5%', right: '12%', zIndex: 4, transform: 'rotate(6deg)' }
   }
 };
 
