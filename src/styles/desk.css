@@ -315,34 +315,7 @@
 
 /* Coffee Cup */
 .coffee-cup {
-    width: clamp(40px, 5vw, 60px);
-    height: clamp(35px, 4vw, 50px);
-    background: var(--paper-cream);
-    border: 3px solid var(--ink-black);
-    border-radius: 0 0 30px 30px;
-    box-shadow: 3px 3px 0 var(--ink-black);
-}
-
-.coffee-cup::before {
-    content: '';
-    position: absolute;
-    top: 5px;
-    right: -15px;
-    width: 15px;
-    height: 18px;
-    border: 3px solid var(--ink-black);
-    border-left: none;
-    border-radius: 0 12px 12px 0;
-}
-
-.coffee-steam {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.2rem;
-    opacity: 0.4;
-    animation: steam 2s ease-in-out infinite;
+    /* SVG handles all styling now */
 }
 
 /* Pen */
