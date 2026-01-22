@@ -71,7 +71,7 @@ const positions = {
     labPapers: { bottom: '8%', left: '65%', zIndex: 3 },
 
     // Papers behind microscope
-    microscopePapers: { bottom: '5%', left: '7%', zIndex: 2 }
+    microscopePapers: { bottom: '5%', left: '15%', zIndex: 2 }
   },
 
   tablet: {
