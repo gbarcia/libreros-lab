@@ -1,0 +1,258 @@
+/* ============================================
+   TERMINAL CHAT STYLES
+   Retro terminal chatbot interface
+   ============================================ */
+
+/* Panel override for terminal */
+.lab-assistant-panel .panel-content {
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+/* Main container */
+.terminal-chat {
+    background: #0a0a0a;
+    border: 3px solid #333;
+    border-radius: 8px;
+    height: clamp(300px, 50vh, 450px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+/* CRT scanline effect */
+.terminal-scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Messages area */
+.terminal-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Custom scrollbar */
+.terminal-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terminal-messages::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.terminal-messages::-webkit-scrollbar-thumb {
+    background: #33ff33;
+    border-radius: 3px;
+}
+
+/* Message styling */
+.terminal-message {
+    display: flex;
+    gap: 8px;
+    line-height: 1.5;
+}
+
+.terminal-prompt {
+    color: #33ff33;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.terminal-text {
+    color: #33ff33;
+    font-size: 0.85rem;
+    word-break: break-word;
+}
+
+/* User message styling */
+.terminal-message.user .terminal-prompt {
+    color: #48D1CC;
+}
+
+.terminal-message.user .terminal-text {
+    color: #48D1CC;
+}
+
+/* System message styling */
+.terminal-message.system .terminal-text {
+    color: #33ff33;
+    opacity: 0.95;
+}
+
+/* Typing indicator */
+.terminal-typing {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.typing-dot {
+    width: 6px;
+    height: 6px;
+    background: #33ff33;
+    border-radius: 50%;
+    animation: typingPulse 1.2s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingPulse {
+    0%, 60%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    30% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Input area */
+.terminal-input-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 15px;
+    background: #111;
+    border-top: 2px solid #333;
+}
+
+.terminal-input-prompt {
+    color: #33ff33;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #33ff33;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    caret-color: #33ff33;
+}
+
+.terminal-input::placeholder {
+    color: #555;
+}
+
+.terminal-input:disabled {
+    opacity: 0.5;
+}
+
+.terminal-submit {
+    background: transparent;
+    border: 1px solid #33ff33;
+    color: #33ff33;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.terminal-submit:hover:not(:disabled) {
+    background: #33ff33;
+    color: #0a0a0a;
+}
+
+.terminal-submit:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    .terminal-chat {
+        height: clamp(250px, 40vh, 350px);
+        border-radius: 8px 8px 0 0;
+    }
+
+    .terminal-messages {
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .terminal-text {
+        font-size: 0.8rem;
+    }
+
+    .terminal-input-area {
+        padding: 10px 12px;
+    }
+
+    .terminal-input {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+/* Glowing cursor effect */
+.terminal-input:focus {
+    animation: cursorGlow 1s ease-in-out infinite;
+}
+
+@keyframes cursorGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(51, 255, 51, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 10px rgba(51, 255, 51, 0.8);
+    }
+}
+
+/* Screen flicker effect (subtle) */
+.terminal-chat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(51, 255, 51, 0.03);
+    pointer-events: none;
+    animation: screenFlicker 4s linear infinite;
+    z-index: 5;
+}
+
+@keyframes screenFlicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    92% {
+        opacity: 1;
+    }
+    93% {
+        opacity: 0.8;
+    }
+    94% {
+        opacity: 1;
+    }
+}

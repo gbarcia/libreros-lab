@@ -8,7 +8,7 @@ import Radio from './components/ui/Radio';
 
 // Sections
 import PrincipalInvestigator from './sections/PrincipalInvestigator';
-import Research from './sections/Research';
+import LabAssistant from './sections/LabAssistant';
 import Publications from './sections/Publications';
 import Team from './sections/Team';
 import News from './sections/News';
@@ -25,6 +25,7 @@ import './styles/desk.css';
 import './styles/sections.css';
 import './styles/responsive.css';
 import './styles/radio.css';
+import './styles/terminal-chat.css';
 
 function App() {
   const { isMobile, isTablet } = useResponsive();
@@ -82,7 +83,7 @@ function App() {
         currentIndex={carousel.currentIndex}
         totalSections={carousel.total}
       />
-      <Research
+      <LabAssistant
         isActive={getActivePanel('research')}
         onClose={handleClosePanel}
         isMobile={isMobile}
