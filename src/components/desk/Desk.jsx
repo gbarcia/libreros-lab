@@ -46,7 +46,7 @@ const positions = {
     flask: { bottom: '38%', left: '3%', zIndex: 6, transform: 'rotate(-5deg)' },
     testTubes: { bottom: '42%', left: '38%', zIndex: 2, transform: 'rotate(3deg)' },
     pipette: { bottom: '40%', left: '58%', zIndex: 2, transform: 'rotate(-18deg)' },
-    microscope: { bottom: '28%', right: '18%', zIndex: 3 },
+    microscope: { bottom: '20%', right: '28%', zIndex: 3 },
 
     // MID ROW (28-42% from bottom) - Clear gap from back row
     notebook: { bottom: '30%', left: '22%', zIndex: 3, transform: 'rotate(4deg)' },
