@@ -57,7 +57,6 @@
     left: 0;
     width: 100%;
     height: 70vh;
-    background: linear-gradient(180deg, #5c4a3d 0%, #3d322a 100%) !important;
     box-shadow:
         inset 0 2px 0 rgba(255,255,255,0.1),
         inset 0 -5px 20px rgba(0,0,0,0.2);
@@ -65,6 +64,7 @@
     overflow: visible;
 }
 
+/* Wood background - in pseudo-element so JS can't touch it */
 .desk::before {
     content: '';
     position: absolute;
@@ -72,14 +72,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 120px,
-        rgba(0,0,0,0.03) 120px,
-        rgba(0,0,0,0.03) 122px
-    );
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 120px,
+            rgba(0,0,0,0.03) 120px,
+            rgba(0,0,0,0.03) 122px
+        ),
+        linear-gradient(180deg, #5c4a3d 0%, #3d322a 100%);
     pointer-events: none;
+    z-index: -1;
 }
 
 .desk::after {

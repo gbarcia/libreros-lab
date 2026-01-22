@@ -116,7 +116,6 @@ const Desk = forwardRef(({
     <div
       ref={ref}
       className={`desk ${className}`}
-      style={{ background: 'linear-gradient(180deg, #5c4a3d 0%, #3d322a 100%)' }}
     >
       {/* Scattered papers - behind folder and notebook */}
       {shouldRender('scatteredPapers') && (

@@ -187,13 +187,7 @@ function App() {
       }
     });
 
-    return () => {
-      ctx.revert();
-      // Ensure desk background is restored after GSAP cleanup
-      if (deskRef.current) {
-        deskRef.current.style.background = 'linear-gradient(180deg, #5c4a3d 0%, #3d322a 100%)';
-      }
-    };
+    return () => ctx.revert();
   }, [isMobile, isTablet]);
 
   // Reset scroll and GSAP state on mount to prevent corruption
@@ -207,8 +201,6 @@ function App() {
     // Clear any lingering GSAP inline styles on desk
     if (deskRef.current) {
       gsap.set(deskRef.current, { clearProps: 'opacity,filter' });
-      // Ensure background is always set
-      deskRef.current.style.background = 'linear-gradient(180deg, #5c4a3d 0%, #3d322a 100%)';
     }
 
     // Handle bfcache (back-forward cache) restoration
@@ -219,7 +211,6 @@ function App() {
         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         ScrollTrigger.refresh(true);
         if (deskRef.current) {
-          deskRef.current.style.background = 'linear-gradient(180deg, #5c4a3d 0%, #3d322a 100%)';
           gsap.set(deskRef.current, { clearProps: 'opacity,filter' });
         }
       }
