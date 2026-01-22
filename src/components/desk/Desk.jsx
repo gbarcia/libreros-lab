@@ -46,12 +46,12 @@ const positions = {
     flask: { bottom: '38%', left: '3%', zIndex: 6, transform: 'rotate(-5deg)' },
     testTubes: { bottom: '42%', left: '38%', zIndex: 2, transform: 'rotate(3deg)' },
     pipette: { bottom: '40%', left: '58%', zIndex: 2, transform: 'rotate(-18deg)' },
-    microscope: { bottom: '35%', right: '6%', zIndex: 3 },
+    microscope: { bottom: '28%', right: '18%', zIndex: 3 },
 
     // MID ROW (28-42% from bottom) - Clear gap from back row
     notebook: { bottom: '30%', left: '22%', zIndex: 3, transform: 'rotate(4deg)' },
     pen: { bottom: '38%', left: '50%', zIndex: 2, transform: 'rotate(-32deg)' },
-    envelope: { bottom: '32%', right: '6%', zIndex: 4, transform: 'rotate(7deg)' },
+    envelope: { bottom: '18%', right: '5%', zIndex: 4, transform: 'rotate(7deg)' },
 
     // FRONT ROW (3-15% from bottom) - Clear gap from mid row
     petriDish: { bottom: '6%', left: '28%', zIndex: 1, transform: 'rotate(12deg)' },
