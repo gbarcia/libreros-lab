@@ -460,3 +460,22 @@
 .narrative-section.visible {
     opacity: 1;
 }
+
+/* Petri Dish Animation */
+.petri-animate {
+    animation: petriPulse 4s ease-in-out infinite;
+}
+
+@keyframes petriPulse {
+    0%, 100% {
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+    50% {
+        filter: drop-shadow(0 4px 8px rgba(74, 111, 165, 0.4));
+    }
+}
+
+.petri-animate:hover {
+    animation: none;
+    filter: drop-shadow(0 6px 12px rgba(74, 111, 165, 0.5));
+}

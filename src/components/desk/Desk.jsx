@@ -54,7 +54,7 @@ const positions = {
     envelope: { bottom: '18%', right: '5%', zIndex: 4, transform: 'rotate(7deg)' },
 
     // FRONT ROW (3-15% from bottom) - Clear gap from mid row
-    petriDish: { bottom: '6%', left: '28%', zIndex: 1, transform: 'rotate(12deg)' },
+    petriDish: { bottom: '6%', left: '5%', zIndex: 1, transform: 'rotate(12deg)' },
     coffeeCup: { bottom: '5%', left: '68%', zIndex: 4 }
   },
 

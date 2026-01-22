@@ -5,7 +5,7 @@ const PetriDish = forwardRef(({ onClick, className = '', style = {} }, ref) => {
   return (
     <div
       ref={ref}
-      className={`petri-dish desk-item clickable ${className}`}
+      className={`petri-dish desk-item clickable petri-animate ${className}`}
       onClick={onClick}
       style={{
         width: 'clamp(70px, 9vw, 110px)',
@@ -38,12 +38,12 @@ const PetriDish = forwardRef(({ onClick, className = '', style = {} }, ref) => {
           strokeWidth="1.5"
         />
 
-        {/* Agar/culture medium */}
+        {/* Agar/culture medium - gray */}
         <circle
           cx="50"
           cy="50"
           r="36"
-          fill="#e8c9a8"
+          fill="#a8a8a8"
           opacity="0.9"
         />
 
