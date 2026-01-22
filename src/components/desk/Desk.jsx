@@ -202,6 +202,9 @@ const Desk = forwardRef(({
         <CoffeeCup style={getPos('coffeeCup')} />
       )}
 
+      {/* Desk mat - desktop only */}
+      {!isMobile && !isTablet && <div className="desk-mat" />}
+
       {/* Hands - desktop only */}
       {!isMobile && !isTablet && <Hands targetPosition={handTarget} />}
     </div>
