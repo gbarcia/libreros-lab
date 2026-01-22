@@ -1,7 +1,16 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { principalInvestigator, teamMembers, administrativeSupport } from '../data/team';
 
-function Team({ isActive, onClose, isManual = false }) {
+function Team({
+  isActive,
+  onClose,
+  isManual = false,
+  isMobile,
+  onNext,
+  onPrev,
+  currentIndex,
+  totalSections
+}) {
   return (
     <ContentPanel
       isActive={isActive}
@@ -9,6 +18,11 @@ function Team({ isActive, onClose, isManual = false }) {
       isManual={isManual}
       title="Lab Team"
       stamp="LIBREROS LAB"
+      isMobile={isMobile}
+      onNext={onNext}
+      onPrev={onPrev}
+      currentIndex={currentIndex}
+      totalSections={totalSections}
     >
       <p>
         The Libreros Lab is part of the Department of Pathology at Yale School of Medicine,

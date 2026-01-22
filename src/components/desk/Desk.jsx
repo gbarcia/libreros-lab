@@ -82,13 +82,21 @@ const positions = {
   },
 
   mobile: {
-    // 6 elements in 3x2 layout - all interactive items visible
-    folder: { top: '5%', left: '12%', zIndex: 5 },
-    terminal: { top: '5%', right: '12%', zIndex: 5 },
-    notebook: { top: '40%', left: '15%', zIndex: 4, transform: 'rotate(2deg)' },
-    microscope: { top: '42%', right: '18%', zIndex: 3 },
-    flask: { bottom: '10%', left: '18%', zIndex: 4, transform: 'rotate(-3deg)' },
-    envelope: { bottom: '12%', right: '18%', zIndex: 4, transform: 'rotate(5deg)' }
+    // ALL elements visible as decorative background (like desktop but scaled)
+    folder: { top: '8%', left: '5%', zIndex: 5 },
+    terminal: { top: '5%', right: '5%', zIndex: 5 },
+    notebook: { top: '12%', left: '22%', zIndex: 4, transform: 'rotate(4deg)' },
+    flask: { bottom: '35%', left: '5%', zIndex: 6, transform: 'rotate(-5deg)' },
+    microscope: { bottom: '12%', left: '20%', zIndex: 3 },
+    envelope: { bottom: '22%', right: '8%', zIndex: 4, transform: 'rotate(7deg)' },
+    coffeeCup: { bottom: '38%', left: '42%', zIndex: 2 },
+    pen: { bottom: '35%', left: '55%', zIndex: 2, transform: 'rotate(-32deg)' },
+    testTubes: { bottom: '8%', left: '70%', zIndex: 4, transform: 'rotate(3deg)' },
+    pipette: { bottom: '38%', left: '62%', zIndex: 2, transform: 'rotate(-18deg)' },
+    petriDish: { bottom: '10%', left: '8%', zIndex: 1, transform: 'rotate(12deg)' },
+    scatteredPapers: { top: '15%', left: '2%', zIndex: 2 },
+    contactPapers: { bottom: '26%', right: '5%', zIndex: 3 },
+    labPapers: { bottom: '12%', left: '68%', zIndex: 3 }
   }
 };
 
@@ -110,9 +118,13 @@ const Desk = forwardRef(({
   const shouldRender = (element) => getPos(element) !== null;
 
   // Handle click with position tracking for hands animation
+  // On mobile, items are decorative only (no clicks)
   const handleItemClick = useCallback((section, event) => {
-    // Get click position for hands animation
-    if (event && !isMobile && !isTablet) {
+    // Mobile: items are decorative, no navigation from desk
+    if (isMobile) return;
+
+    // Get click position for hands animation (desktop only)
+    if (event && !isTablet) {
       const rect = event.currentTarget.getBoundingClientRect();
       setHandTarget({
         x: rect.left + rect.width / 2,
@@ -205,8 +217,8 @@ const Desk = forwardRef(({
       {/* Desk mat - desktop only */}
       {!isMobile && !isTablet && <div className="desk-mat" />}
 
-      {/* Hands - desktop only */}
-      {!isMobile && !isTablet && <Hands targetPosition={handTarget} />}
+      {/* Hands - desktop and mobile (static on mobile) */}
+      {!isTablet && <Hands targetPosition={isMobile ? null : handTarget} />}
     </div>
   );
 });

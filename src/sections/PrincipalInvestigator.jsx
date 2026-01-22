@@ -1,7 +1,16 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { principalInvestigator } from '../data/team';
 
-function PrincipalInvestigator({ isActive, onClose, isManual = false }) {
+function PrincipalInvestigator({
+  isActive,
+  onClose,
+  isManual = false,
+  isMobile,
+  onNext,
+  onPrev,
+  currentIndex,
+  totalSections
+}) {
   const pi = principalInvestigator;
 
   return (
@@ -11,6 +20,11 @@ function PrincipalInvestigator({ isActive, onClose, isManual = false }) {
       isManual={isManual}
       title="Principal Investigator"
       stamp="YALE PATHOLOGY"
+      isMobile={isMobile}
+      onNext={onNext}
+      onPrev={onPrev}
+      currentIndex={currentIndex}
+      totalSections={totalSections}
     >
       <div className="section-pi">
         {/* Photo placeholder */}

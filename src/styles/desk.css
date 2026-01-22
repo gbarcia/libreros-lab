@@ -76,6 +76,13 @@
     opacity: 0.5;
 }
 
+/* Hide text navigation on mobile - carousel handles navigation */
+@media (max-width: 767px) {
+    .masthead-nav {
+        display: none;
+    }
+}
+
 /* Desk */
 .desk {
     position: absolute;

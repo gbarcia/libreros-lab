@@ -17,6 +17,7 @@ import Contact from './sections/Contact';
 // Hooks
 import useResponsive from './hooks/useResponsive';
 import useNavigation from './hooks/useNavigation';
+import useCarouselNavigation from './hooks/useCarouselNavigation';
 
 // Styles
 import './styles/globals.css';
@@ -28,21 +29,31 @@ import './styles/radio.css';
 function App() {
   const { isMobile, isTablet } = useResponsive();
   const { activePanel, navigateTo, closePanel } = useNavigation();
+  const carousel = useCarouselNavigation();
 
   const [terminalActive, setTerminalActive] = useState(true);
 
   // Refs
   const deskRef = useRef(null);
 
-  // Handle navigation (click on desk items)
+  // Handle navigation (click on desk items) - desktop only
   const handleNavigate = useCallback((section) => {
     navigateTo(section);
   }, [navigateTo]);
 
-  // Handle closing panel
+  // Handle closing panel - desktop only
   const handleClosePanel = useCallback(() => {
     closePanel();
   }, [closePanel]);
+
+  // Determine which panel is active
+  // Mobile: always show carousel section, Desktop: show clicked panel
+  const getActivePanel = (section) => {
+    if (isMobile) {
+      return carousel.currentSection === section;
+    }
+    return activePanel === section;
+  };
 
   return (
     <>
@@ -63,28 +74,58 @@ function App() {
 
       {/* Section Panels */}
       <PrincipalInvestigator
-        isActive={activePanel === 'pi'}
+        isActive={getActivePanel('pi')}
         onClose={handleClosePanel}
+        isMobile={isMobile}
+        onNext={carousel.next}
+        onPrev={carousel.prev}
+        currentIndex={carousel.currentIndex}
+        totalSections={carousel.total}
       />
       <Research
-        isActive={activePanel === 'research'}
+        isActive={getActivePanel('research')}
         onClose={handleClosePanel}
+        isMobile={isMobile}
+        onNext={carousel.next}
+        onPrev={carousel.prev}
+        currentIndex={carousel.currentIndex}
+        totalSections={carousel.total}
       />
       <Publications
-        isActive={activePanel === 'publications'}
+        isActive={getActivePanel('publications')}
         onClose={handleClosePanel}
+        isMobile={isMobile}
+        onNext={carousel.next}
+        onPrev={carousel.prev}
+        currentIndex={carousel.currentIndex}
+        totalSections={carousel.total}
       />
       <Team
-        isActive={activePanel === 'team'}
+        isActive={getActivePanel('team')}
         onClose={handleClosePanel}
+        isMobile={isMobile}
+        onNext={carousel.next}
+        onPrev={carousel.prev}
+        currentIndex={carousel.currentIndex}
+        totalSections={carousel.total}
       />
       <News
-        isActive={activePanel === 'news'}
+        isActive={getActivePanel('news')}
         onClose={handleClosePanel}
+        isMobile={isMobile}
+        onNext={carousel.next}
+        onPrev={carousel.prev}
+        currentIndex={carousel.currentIndex}
+        totalSections={carousel.total}
       />
       <Contact
-        isActive={activePanel === 'contact'}
+        isActive={getActivePanel('contact')}
         onClose={handleClosePanel}
+        isMobile={isMobile}
+        onNext={carousel.next}
+        onPrev={carousel.prev}
+        currentIndex={carousel.currentIndex}
+        totalSections={carousel.total}
       />
     </>
   );

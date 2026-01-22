@@ -320,3 +320,108 @@
 .contact-block a:hover {
     text-decoration: underline;
 }
+
+/* ============================================
+   MOBILE CAROUSEL STYLES
+   Drawer from bottom with navigation
+   ============================================ */
+
+@media (max-width: 767px) {
+    /* Panel as drawer from bottom */
+    .content-panel.mobile {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(100%);
+        max-height: 60vh;
+        width: 100%;
+        max-width: none;
+        border-radius: 20px 20px 0 0;
+        border-bottom: none;
+        box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.2);
+        padding: 20px 20px 0 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-panel.mobile.active {
+        transform: translateY(0);
+    }
+
+    .content-panel.mobile .panel-content {
+        flex: 1;
+        overflow-y: auto;
+        padding-bottom: 15px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Mobile navigation controls */
+    .panel-nav-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 10px;
+        border-top: 1px solid var(--paper-aged);
+        background: var(--paper-cream);
+        margin: 0 -20px;
+        padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .nav-arrow {
+        width: 44px;
+        height: 44px;
+        background: var(--paper-aged);
+        border: 2px solid var(--ink-black);
+        border-radius: 50%;
+        font-size: 1.2rem;
+        font-family: 'IBM Plex Mono', monospace;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+    }
+
+    .nav-arrow:active {
+        background: var(--ink-black);
+        color: var(--paper-cream);
+        transform: scale(0.95);
+    }
+
+    .nav-dots {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .nav-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--ink-faded);
+        opacity: 0.3;
+        transition: all 0.2s;
+    }
+
+    .nav-dot.active {
+        opacity: 1;
+        background: var(--blue-klein);
+        transform: scale(1.2);
+    }
+
+    /* Smaller header on mobile drawer */
+    .content-panel.mobile .panel-header {
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+
+    .content-panel.mobile .panel-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .content-panel.mobile .panel-stamp {
+        font-size: 0.5rem;
+        padding: 3px 6px;
+    }
+}

@@ -37,58 +37,79 @@
     }
 
     .desk {
-        height: 60vh;
+        height: 55vh;
     }
 
-    /* Hide decorative elements on mobile - keep all interactive items */
-    .pen,
-    .pipette,
-    .test-tubes,
-    .petri-dish,
-    .coffee-cup {
-        display: none;
-    }
-
-    /* Adjust sizes for mobile - balanced proportions */
+    /* ALL desk items visible as decorative background */
+    /* Scaled down sizes for mobile viewport */
     .folder {
-        width: 70px;
-        height: 88px;
+        width: clamp(50px, 14vw, 70px);
+        height: clamp(63px, 17vw, 88px);
     }
 
     .terminal {
-        width: 95px;
-        height: 80px;
+        width: clamp(70px, 22vw, 100px);
+        height: clamp(58px, 18vw, 85px);
     }
 
     .notebook {
-        width: 55px;
-        height: 70px;
+        width: clamp(45px, 12vw, 60px);
+        height: clamp(56px, 15vw, 75px);
     }
 
     .microscope {
-        width: 45px;
-        height: 60px;
+        width: clamp(35px, 10vw, 50px);
+        height: clamp(47px, 13vw, 65px);
     }
 
     .flask {
-        width: 35px;
-        height: 50px;
+        width: clamp(28px, 8vw, 40px);
+        height: clamp(40px, 11vw, 55px);
     }
 
     .envelope {
-        width: 50px;
-        height: 35px;
+        width: clamp(40px, 11vw, 55px);
+        height: clamp(28px, 8vw, 38px);
     }
 
-    /* Hide hands on mobile */
+    .coffee-cup {
+        width: clamp(30px, 8vw, 42px);
+    }
+
+    .pen {
+        width: clamp(50px, 14vw, 70px);
+    }
+
+    .test-tubes {
+        width: clamp(35px, 9vw, 48px);
+    }
+
+    .pipette {
+        width: clamp(45px, 12vw, 60px);
+    }
+
+    .petri-dish {
+        width: clamp(35px, 9vw, 48px);
+    }
+
+    /* Hands visible on mobile (static, decorative) */
     .hands-container {
-        display: none;
+        display: flex;
+        bottom: 5%;
     }
 
-    /* Larger touch targets */
-    .desk-item {
-        min-width: 44px;
-        min-height: 44px;
+    .hand-svg {
+        width: clamp(60px, 16vw, 90px);
+    }
+
+    /* Desk items are decorative only - no clicks */
+    .desk-item.clickable {
+        pointer-events: none;
+        cursor: default;
+    }
+
+    .desk-item.clickable:hover {
+        transform: none;
     }
 
     /* Content panels full width on mobile */

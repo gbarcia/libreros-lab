@@ -1,7 +1,16 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { principalInvestigator, labLocation } from '../data/team';
 
-function Contact({ isActive, onClose, isManual = false }) {
+function Contact({
+  isActive,
+  onClose,
+  isManual = false,
+  isMobile,
+  onNext,
+  onPrev,
+  currentIndex,
+  totalSections
+}) {
   const pi = principalInvestigator;
   const loc = labLocation;
 
@@ -12,6 +21,11 @@ function Contact({ isActive, onClose, isManual = false }) {
       isManual={isManual}
       title="Contact"
       stamp="GET IN TOUCH"
+      isMobile={isMobile}
+      onNext={onNext}
+      onPrev={onPrev}
+      currentIndex={currentIndex}
+      totalSections={totalSections}
     >
       <p>
         For inquiries about research collaborations, lab opportunities, or general questions,

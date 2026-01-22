@@ -1,7 +1,16 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { news, getAwards } from '../data/news';
 
-function News({ isActive, onClose, isManual = false }) {
+function News({
+  isActive,
+  onClose,
+  isManual = false,
+  isMobile,
+  onNext,
+  onPrev,
+  currentIndex,
+  totalSections
+}) {
   const awards = getAwards();
 
   const formatDate = (dateStr) => {
@@ -16,6 +25,11 @@ function News({ isActive, onClose, isManual = false }) {
       isManual={isManual}
       title="News & Awards"
       stamp="LATEST"
+      isMobile={isMobile}
+      onNext={onNext}
+      onPrev={onPrev}
+      currentIndex={currentIndex}
+      totalSections={totalSections}
     >
       <h4 style={{
         fontFamily: 'IBM Plex Mono, monospace',

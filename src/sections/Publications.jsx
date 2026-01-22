@@ -1,7 +1,16 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { publications, getFeaturedPublications } from '../data/publications';
 
-function Publications({ isActive, onClose, isManual = false }) {
+function Publications({
+  isActive,
+  onClose,
+  isManual = false,
+  isMobile,
+  onNext,
+  onPrev,
+  currentIndex,
+  totalSections
+}) {
   const featured = getFeaturedPublications();
 
   return (
@@ -11,6 +20,11 @@ function Publications({ isActive, onClose, isManual = false }) {
       isManual={isManual}
       title="Publications"
       stamp="PEER REVIEWED"
+      isMobile={isMobile}
+      onNext={onNext}
+      onPrev={onPrev}
+      currentIndex={currentIndex}
+      totalSections={totalSections}
     >
       <p>
         Selected publications from Dr. Libreros' research on resolution of inflammation,

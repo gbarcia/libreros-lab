@@ -1,7 +1,16 @@
 import ContentPanel from '../components/ui/ContentPanel';
 import { researchAreas, researchOverview } from '../data/research';
 
-function Research({ isActive, onClose, isManual = false }) {
+function Research({
+  isActive,
+  onClose,
+  isManual = false,
+  isMobile,
+  onNext,
+  onPrev,
+  currentIndex,
+  totalSections
+}) {
   return (
     <ContentPanel
       isActive={isActive}
@@ -9,6 +18,11 @@ function Research({ isActive, onClose, isManual = false }) {
       isManual={isManual}
       title="Research Focus"
       stamp="RESOLUTION BIOLOGY"
+      isMobile={isMobile}
+      onNext={onNext}
+      onPrev={onPrev}
+      currentIndex={currentIndex}
+      totalSections={totalSections}
     >
       <p><strong>{researchOverview.title}</strong></p>
 
