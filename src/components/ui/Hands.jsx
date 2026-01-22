@@ -100,30 +100,25 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
           onClick={toggleGloves}
           style={{ cursor: 'pointer' }}
         >
-          {/* Main hand - oval shape */}
+          {/* Thumb - drawn first so hand covers inner edge */}
+          <ellipse
+            cx="92"
+            cy="65"
+            rx="16"
+            ry="10"
+            fill={handFill}
+            stroke="#1a1815"
+            strokeWidth="2.5"
+            transform="rotate(-20 92 65)"
+          />
+
+          {/* Main hand - oval shape (covers thumb inner edge) */}
           <ellipse
             cx="50"
             cy="55"
             rx="38"
             ry="50"
             fill={handFill}
-            stroke="#1a1815"
-            strokeWidth="2.5"
-          />
-
-          {/* Thumb - wider ellipse rotated for natural look */}
-          <ellipse
-            cx="90"
-            cy="68"
-            rx="18"
-            ry="12"
-            fill={handFill}
-            transform="rotate(-25 90 68)"
-          />
-          {/* Thumb outer border only (outer edge) */}
-          <path
-            d="M 78 55 Q 105 60, 102 80 Q 98 90, 85 82"
-            fill="none"
             stroke="#1a1815"
             strokeWidth="2.5"
           />
@@ -158,30 +153,25 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
           onClick={toggleGloves}
           style={{ cursor: 'pointer' }}
         >
-          {/* Main hand - oval shape */}
+          {/* Thumb - drawn first so hand covers inner edge (mirrored) */}
+          <ellipse
+            cx="8"
+            cy="65"
+            rx="16"
+            ry="10"
+            fill={handFill}
+            stroke="#1a1815"
+            strokeWidth="2.5"
+            transform="rotate(20 8 65)"
+          />
+
+          {/* Main hand - oval shape (covers thumb inner edge) */}
           <ellipse
             cx="50"
             cy="55"
             rx="38"
             ry="50"
             fill={handFill}
-            stroke="#1a1815"
-            strokeWidth="2.5"
-          />
-
-          {/* Thumb - wider ellipse rotated for natural look (mirrored) */}
-          <ellipse
-            cx="10"
-            cy="68"
-            rx="18"
-            ry="12"
-            fill={handFill}
-            transform="rotate(25 10 68)"
-          />
-          {/* Thumb outer border only (outer edge, mirrored) */}
-          <path
-            d="M 22 55 Q -5 60, -2 80 Q 2 90, 15 82"
-            fill="none"
             stroke="#1a1815"
             strokeWidth="2.5"
           />
