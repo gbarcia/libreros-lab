@@ -5,7 +5,7 @@
 
 .radio-container {
     position: fixed;
-    top: 20px;
+    bottom: 20px;
     right: 20px;
     z-index: 500;
 }
@@ -115,7 +115,7 @@
 /* Popup styles */
 .radio-popup {
     position: absolute;
-    top: calc(100% + 10px);
+    bottom: calc(100% + 10px);
     right: 0;
     width: 220px;
     background: var(--paper-cream, #f7f3e9);
@@ -130,7 +130,7 @@
 @keyframes popupSlide {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
@@ -307,6 +307,7 @@
 @media (max-width: 767px) {
     .radio-container {
         top: 10px;
+        bottom: auto;
         right: 10px;
     }
 
