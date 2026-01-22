@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const tracks = [
   { id: 1, name: 'Ambient Lab', freq: '88.1 FM', src: '/1.m4a' },
@@ -6,65 +6,58 @@ const tracks = [
 ];
 
 const Radio = () => {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
-  const [volume, setVolume] = useState(0.5);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.7);
   const audioRef = useRef(null);
   const popupRef = useRef(null);
 
-  // Play audio function
-  const playAudio = useCallback(() => {
+  // Toggle play/pause
+  const togglePlay = () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      audioRef.current.volume = volume;
+      audioRef.current.play()
+        .then(() => setIsPlaying(true))
+        .catch((err) => {
+          console.error('Play failed:', err);
+          setIsPlaying(false);
+        });
+    }
+  };
+
+  // Update volume when changed
+  useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = volume;
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => setIsPlaying(true))
-          .catch((err) => {
-            console.log('Audio play failed:', err);
-            setIsPlaying(false);
-          });
-      }
     }
   }, [volume]);
 
-  // Pause audio function
-  const pauseAudio = useCallback(() => {
+  // Handle track change
+  const changeTrack = (trackIndex) => {
+    if (trackIndex === currentTrack) return;
+
+    const wasPlaying = isPlaying;
     if (audioRef.current) {
       audioRef.current.pause();
-      setIsPlaying(false);
     }
-  }, []);
 
-  // Handle audio play/pause based on mute state
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume;
-    }
-    if (!isMuted) {
-      playAudio();
-    } else {
-      pauseAudio();
-    }
-  }, [isMuted, playAudio, pauseAudio, volume]);
+    setCurrentTrack(trackIndex);
 
-  // Handle track change
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.src = tracks[currentTrack].src;
-      if (!isMuted) {
-        audioRef.current.load();
-        // Wait for canplay event before playing
-        const handleCanPlay = () => {
-          playAudio();
-          audioRef.current.removeEventListener('canplay', handleCanPlay);
-        };
-        audioRef.current.addEventListener('canplay', handleCanPlay);
+    // Need to wait for src to update
+    setTimeout(() => {
+      if (audioRef.current && wasPlaying) {
+        audioRef.current.play()
+          .then(() => setIsPlaying(true))
+          .catch(console.error);
       }
-    }
-  }, [currentTrack, isMuted, playAudio]);
+    }, 100);
+  };
 
   // Close popup when clicking outside
   useEffect(() => {
@@ -89,14 +82,10 @@ const Radio = () => {
     setShowPopup(!showPopup);
   };
 
-  const handleMuteToggle = (e) => {
+  const handlePlayToggle = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    setIsMuted((prev) => !prev);
-  };
-
-  const handleTrackChange = (trackIndex) => {
-    setCurrentTrack(trackIndex);
+    togglePlay();
   };
 
   const handleVolumeChange = (e) => {
@@ -203,10 +192,10 @@ const Radio = () => {
             cx="94"
             cy="40"
             r="4"
-            fill={isMuted ? '#666' : '#ff3333'}
+            fill={isPlaying ? '#ff3333' : '#666'}
             stroke="#1a1815"
             strokeWidth="1"
-            className={!isMuted && isPlaying ? 'radio-led-pulse' : ''}
+            className={isPlaying ? 'radio-led-pulse' : ''}
           />
 
           {/* LED label */}
@@ -218,13 +207,13 @@ const Radio = () => {
             fontFamily="IBM Plex Mono, monospace"
             fill="#1a1815"
           >
-            {isMuted ? 'MUTE' : 'ON AIR'}
+            {isPlaying ? 'ON AIR' : 'OFF'}
           </text>
 
           {/* Volume knob (clickable for mute toggle) */}
           <g
             className="radio-knob"
-            onClick={handleMuteToggle}
+            onClick={handlePlayToggle}
             style={{ cursor: 'pointer' }}
           >
             <circle
@@ -291,7 +280,7 @@ const Radio = () => {
         </svg>
 
         {/* Signal waves animation */}
-        {!isMuted && (
+        {isPlaying && (
           <div className="radio-waves">
             <span></span>
             <span></span>
@@ -318,7 +307,7 @@ const Radio = () => {
               <div
                 key={track.id}
                 className={`radio-station ${currentTrack === index ? 'active' : ''}`}
-                onClick={() => handleTrackChange(index)}
+                onClick={() => changeTrack(index)}
               >
                 <span className="radio-station-indicator">
                   {currentTrack === index ? '●' : '○'}
@@ -343,7 +332,7 @@ const Radio = () => {
           </div>
 
           <div className="radio-popup-hint">
-            Click knob to {isMuted ? 'unmute' : 'mute'}
+            Click knob to {isPlaying ? 'pause' : 'play'}
           </div>
         </div>
       )}
