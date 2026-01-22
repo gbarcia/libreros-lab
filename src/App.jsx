@@ -86,6 +86,14 @@ function App() {
         setTerminalActive(true);
       }, 0.3);
 
+      // Open sections based on scroll progress
+      tl.add(() => navigateTo('pi'), 0.15);
+      tl.add(() => navigateTo('research'), 0.30);
+      tl.add(() => navigateTo('publications'), 0.45);
+      tl.add(() => navigateTo('team'), 0.60);
+      tl.add(() => navigateTo('news'), 0.75);
+      tl.add(() => navigateTo('contact'), 0.90);
+
       // Animate hands if on desktop
       if (!isMobile && !isTablet) {
         const hands = document.querySelector('.hands-container');
@@ -119,7 +127,7 @@ function App() {
     });
 
     return () => ctx.revert();
-  }, [isMobile, isTablet]);
+  }, [isMobile, isTablet, navigateTo]);
 
   // Refresh ScrollTrigger on resize
   useEffect(() => {
