@@ -132,10 +132,9 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
           />
 
           {/* Finger lines */}
-          <line x1="28" y1="42" x2="28" y2="18" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
-          <line x1="42" y1="38" x2="42" y2="12" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
-          <line x1="56" y1="38" x2="56" y2="12" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
-          <line x1="70" y1="42" x2="70" y2="18" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="32" y1="40" x2="32" y2="16" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="50" y1="36" x2="50" y2="10" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="68" y1="40" x2="68" y2="16" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
 
           {/* Shirt cuff - drawn last to appear on top */}
           <rect x="15" y="100" width="70" height="90" rx="3" fill="#fff" stroke="#1a1815" strokeWidth="2.5"/>
@@ -190,10 +189,9 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
           />
 
           {/* Finger lines */}
-          <line x1="28" y1="42" x2="28" y2="18" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
-          <line x1="42" y1="38" x2="42" y2="12" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
-          <line x1="56" y1="38" x2="56" y2="12" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
-          <line x1="70" y1="42" x2="70" y2="18" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="32" y1="40" x2="32" y2="16" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="50" y1="36" x2="50" y2="10" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
+          <line x1="68" y1="40" x2="68" y2="16" stroke="#1a1815" strokeWidth="1.5" opacity="0.4" strokeLinecap="round" />
 
           {/* Shirt cuff - drawn last to appear on top */}
           <rect x="15" y="100" width="70" height="90" rx="3" fill="#fff" stroke="#1a1815" strokeWidth="2.5"/>
