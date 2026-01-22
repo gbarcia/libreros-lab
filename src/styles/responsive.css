@@ -17,11 +17,10 @@
         width: clamp(80px, 12vw, 130px);
     }
 
-    /* Hide decorative elements on tablet */
+    /* Hide decorative elements on tablet - keep microscope visible */
     .test-tubes,
     .pipette,
     .petri-dish,
-    .microscope,
     .pen {
         display: none;
     }
@@ -41,26 +40,44 @@
         height: 55vh;
     }
 
-    /* Hide elements on mobile - only show Folder, Terminal, Flask, Envelope */
-    .notebook,
+    /* Hide decorative elements on mobile - keep all interactive items */
     .pen,
     .pipette,
     .test-tubes,
     .petri-dish,
-    .microscope,
     .coffee-cup {
         display: none;
     }
 
     /* Adjust sizes for mobile */
     .folder {
-        width: 120px;
-        height: 150px;
+        width: 100px;
+        height: 125px;
     }
 
     .terminal {
-        width: 160px;
-        height: 140px;
+        width: 140px;
+        height: 120px;
+    }
+
+    .notebook {
+        width: 80px;
+        height: 100px;
+    }
+
+    .microscope {
+        width: 60px;
+        height: 80px;
+    }
+
+    .flask {
+        width: 50px;
+        height: 70px;
+    }
+
+    .envelope {
+        width: 70px;
+        height: 50px;
     }
 
     /* Hide hands on mobile */

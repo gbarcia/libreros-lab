@@ -63,21 +63,24 @@ const positions = {
   },
 
   tablet: {
-    // 6 elements with generous spacing
+    // 7 elements - all interactive items visible
     folder: { top: '4%', left: '3%', zIndex: 5 },
     terminal: { top: '3%', right: '3%', zIndex: 5 },
     flask: { bottom: '48%', left: '8%', zIndex: 4, transform: 'rotate(-4deg)' },
     notebook: { bottom: '25%', left: '32%', zIndex: 3, transform: 'rotate(3deg)' },
     envelope: { bottom: '40%', right: '8%', zIndex: 4, transform: 'rotate(6deg)' },
-    coffeeCup: { bottom: '8%', left: '45%', zIndex: 1 }
+    coffeeCup: { bottom: '8%', left: '45%', zIndex: 1 },
+    microscope: { bottom: '8%', right: '12%', zIndex: 3 }
   },
 
   mobile: {
-    // 4 elements in clear 2x2 layout
+    // 6 elements in 3x2 layout - all interactive items visible
     folder: { top: '4%', left: '5%', zIndex: 5 },
     terminal: { top: '4%', right: '5%', zIndex: 5 },
-    flask: { bottom: '12%', left: '8%', zIndex: 4, transform: 'rotate(-4deg)' },
-    envelope: { bottom: '12%', right: '8%', zIndex: 4, transform: 'rotate(6deg)' }
+    notebook: { top: '38%', left: '5%', zIndex: 4, transform: 'rotate(3deg)' },
+    microscope: { top: '38%', right: '5%', zIndex: 3 },
+    flask: { bottom: '8%', left: '8%', zIndex: 4, transform: 'rotate(-4deg)' },
+    envelope: { bottom: '8%', right: '8%', zIndex: 4, transform: 'rotate(6deg)' }
   }
 };
 
