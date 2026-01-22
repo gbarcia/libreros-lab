@@ -13,6 +13,7 @@ import PetriDish from './PetriDish';
 import ScatteredPapers from './ScatteredPapers';
 import ContactPapers from './ContactPapers';
 import LabPapers from './LabPapers';
+import MicroscopePapers from './MicroscopePapers';
 import Hands from '../ui/Hands';
 
 /*
@@ -67,7 +68,10 @@ const positions = {
     contactPapers: { bottom: '22%', right: '2%', zIndex: 3 },
 
     // Papers behind test tubes
-    labPapers: { bottom: '8%', left: '65%', zIndex: 3 }
+    labPapers: { bottom: '8%', left: '65%', zIndex: 3 },
+
+    // Papers behind microscope
+    microscopePapers: { bottom: '5%', left: '15%', zIndex: 2 }
   },
 
   tablet: {
@@ -153,6 +157,11 @@ const Desk = forwardRef(({
       {/* Papers behind test tubes */}
       {shouldRender('labPapers') && (
         <LabPapers style={getPos('labPapers')} />
+      )}
+
+      {/* Papers behind microscope */}
+      {shouldRender('microscopePapers') && (
+        <MicroscopePapers style={getPos('microscopePapers')} />
       )}
 
       {/* TOP ROW */}
