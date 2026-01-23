@@ -154,15 +154,19 @@ const Desk = forwardRef(({
       )}
 
       {/* TOP ROW */}
-      <Folder
-        onClick={(e) => handleItemClick('pi', e)}
-        style={getPos('folder')}
-      />
-      <Terminal
-        onClick={(e) => handleItemClick('assistant', e)}
-        isActive={terminalActive}
-        style={getPos('terminal')}
-      />
+      {shouldRender('folder') && (
+        <Folder
+          onClick={(e) => handleItemClick('pi', e)}
+          style={getPos('folder')}
+        />
+      )}
+      {shouldRender('terminal') && (
+        <Terminal
+          onClick={(e) => handleItemClick('assistant', e)}
+          isActive={terminalActive}
+          style={getPos('terminal')}
+        />
+      )}
 
       {/* BACK ROW */}
       {shouldRender('flask') && (
