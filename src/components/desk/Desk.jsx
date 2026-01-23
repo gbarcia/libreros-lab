@@ -48,7 +48,7 @@ const positions = {
 
     // BACK ROW (38-48% from bottom) - Lowered to be clearly visible
     flask: { bottom: '38%', left: '3%', zIndex: 6, transform: 'rotate(-5deg)' },
-    testTubes: { bottom: '5%', left: '68%', zIndex: 4, transform: 'rotate(3deg)' },
+    testTubes: { bottom: '0%', left: '68%', zIndex: 4, transform: 'rotate(3deg)' },
     pipette: { bottom: '40%', left: '58%', zIndex: 2, transform: 'rotate(-18deg)' },
     microscope: { bottom: '0%', left: '10%', zIndex: 3 },
 
