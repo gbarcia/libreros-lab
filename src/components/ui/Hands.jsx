@@ -6,6 +6,24 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
   const handsRef = useRef(null);
   const containerRef = useRef(null);
 
+  // Subtle breathing animation - gentle up and down movement
+  useEffect(() => {
+    if (!handsRef.current) return;
+
+    const breathingAnimation = gsap.to(handsRef.current, {
+      y: -8,
+      duration: 2.5,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+      repeatDelay: 0
+    });
+
+    return () => {
+      breathingAnimation.kill();
+    };
+  }, []);
+
   // Animate hands toward target when clicked
   useEffect(() => {
     if (!targetPosition || !containerRef.current || !handsRef.current) return;
