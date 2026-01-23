@@ -19,12 +19,12 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
     const offsetX = targetPosition.x - containerCenterX;
     const offsetY = targetPosition.y - containerCenterY;
 
-    // Animate hands toward target
+    // Animate hands toward target (horizontal only)
     const tl = gsap.timeline();
 
     tl.to(handsRef.current, {
       x: offsetX * 0.5,
-      y: offsetY * 0.6,
+      y: 0,
       duration: 0.4,
       ease: 'power2.out'
     });
