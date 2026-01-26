@@ -10,6 +10,7 @@ import Envelope from './Envelope';
 import TestTubes from './TestTubes';
 import Pipette from './Pipette';
 import PetriDish from './PetriDish';
+import Beeper from './Beeper';
 import ScatteredPapers from './ScatteredPapers';
 import ContactPapers from './ContactPapers';
 import LabPapers from './LabPapers';
@@ -60,6 +61,7 @@ const positions = {
     // FRONT ROW (3-15% from bottom) - Clear gap from mid row
     petriDish: { bottom: '6%', left: '5%', zIndex: 1, transform: 'rotate(12deg)' },
     coffeeCup: { bottom: '42%', left: '38%', zIndex: 2 },
+    beeper: { bottom: '45%', left: '28%', zIndex: 2, transform: 'rotate(-8deg)' },
 
     // Scattered papers beneath folder and notebook
     scatteredPapers: { top: '12%', left: '0%', zIndex: 2 },
@@ -214,6 +216,12 @@ const Desk = forwardRef(({
       )}
       {shouldRender('coffeeCup') && (
         <CoffeeCup style={getPos('coffeeCup')} />
+      )}
+      {shouldRender('beeper') && (
+        <Beeper
+          onClick={(e) => handleItemClick('media', e)}
+          style={getPos('beeper')}
+        />
       )}
 
       {/* Desk mat - desktop only */}

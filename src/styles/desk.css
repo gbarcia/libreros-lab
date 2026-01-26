@@ -690,6 +690,78 @@
 }
 
 /* ============================================
+   BEEPER STYLES
+   Vintage pager with LCD screen
+   ============================================ */
+
+.beeper {
+    animation: beeperPulse 4s ease-in-out infinite;
+    filter: drop-shadow(2px 2px 0 rgba(26, 24, 21, 0.5));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+@keyframes beeperPulse {
+    0%, 100% {
+        transform: rotate(-8deg) scale(1);
+    }
+    50% {
+        transform: rotate(-8deg) scale(1.02);
+        filter: drop-shadow(3px 3px 8px rgba(51, 204, 51, 0.3));
+    }
+}
+
+.beeper:hover {
+    animation: none;
+    transform: rotate(-8deg) scale(1.08);
+    filter: drop-shadow(4px 4px 12px rgba(51, 204, 51, 0.4));
+}
+
+/* LCD Screen glow effect */
+.beeper-screen {
+    animation: screenGlow 2s ease-in-out infinite;
+}
+
+@keyframes screenGlow {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.1);
+    }
+}
+
+/* Screen text animation */
+.beeper-screen-text {
+    animation: textFade 2s ease-in-out infinite;
+}
+
+@keyframes textFade {
+    0%, 100% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Scanlines subtle movement */
+.beeper-scanlines {
+    animation: scanlineMove 0.1s linear infinite;
+}
+
+@keyframes scanlineMove {
+    0% {
+        opacity: 0.08;
+    }
+    50% {
+        opacity: 0.12;
+    }
+    100% {
+        opacity: 0.08;
+    }
+}
+
+/* ============================================
    DESKTOP ONLY ANIMATIONS
    Disable subtle pulse animations on mobile
    ============================================ */
@@ -700,7 +772,8 @@
     .envelope,
     .microscope,
     .flask,
-    .petri-animate {
+    .petri-animate,
+    .beeper {
         animation: none !important;
     }
 }

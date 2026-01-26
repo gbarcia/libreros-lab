@@ -14,6 +14,7 @@ import Publications from './sections/Publications';
 import Team from './sections/Team';
 import News from './sections/News';
 import Contact from './sections/Contact';
+import MediaGallery from './sections/MediaGallery';
 
 // Hooks
 import useResponsive from './hooks/useResponsive';
@@ -131,6 +132,15 @@ function App() {
       />
       <Contact
         isActive={getActivePanel('contact')}
+        onClose={handleClosePanel}
+        isMobile={isMobile}
+        onNext={carousel.next}
+        onPrev={carousel.prev}
+        currentIndex={carousel.currentIndex}
+        totalSections={carousel.total}
+      />
+      <MediaGallery
+        isActive={getActivePanel('media')}
         onClose={handleClosePanel}
         isMobile={isMobile}
         onNext={carousel.next}
