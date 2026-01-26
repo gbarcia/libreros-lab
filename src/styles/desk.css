@@ -702,17 +702,17 @@
 
 @keyframes beeperPulse {
     0%, 100% {
-        transform: rotate(-8deg) scale(1);
+        transform: rotate(-5deg) scale(1);
     }
     50% {
-        transform: rotate(-8deg) scale(1.02);
+        transform: rotate(-5deg) scale(1.02);
         filter: drop-shadow(3px 3px 8px rgba(51, 204, 51, 0.3));
     }
 }
 
 .beeper:hover {
     animation: none;
-    transform: rotate(-8deg) scale(1.08);
+    transform: rotate(-5deg) scale(1.08);
     filter: drop-shadow(4px 4px 12px rgba(51, 204, 51, 0.4));
 }
 
@@ -758,6 +758,34 @@
     }
     100% {
         opacity: 0.08;
+    }
+}
+
+/* Slideshow transition */
+.beeper-slideshow {
+    animation: slideshowFade 0.3s ease-in-out;
+}
+
+@keyframes slideshowFade {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Play icon pulse */
+.beeper-play-icon {
+    animation: playPulse 1s ease-in-out infinite;
+}
+
+@keyframes playPulse {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
     }
 }
 

@@ -1,20 +1,20 @@
 import { forwardRef, useState, useEffect } from 'react';
+import { mediaItems } from '../../data/mediaGallery';
 
 // Vintage Beeper/Pager SVG illustration
-// Displays animated preview text on LCD screen
+// Displays slideshow of media content on LCD screen
 const Beeper = forwardRef(({ onClick, className = '', style = {} }, ref) => {
-  const [displayText, setDisplayText] = useState('MEDIA');
-  const messages = ['MEDIA', 'LAB', 'VIDEO', 'VIEW'];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Cycle through display messages
+  // Fast slideshow rotation (800ms)
   useEffect(() => {
-    let index = 0;
     const interval = setInterval(() => {
-      index = (index + 1) % messages.length;
-      setDisplayText(messages[index]);
-    }, 2000);
+      setCurrentIndex(i => (i + 1) % mediaItems.length);
+    }, 800);
     return () => clearInterval(interval);
   }, []);
+
+  const currentItem = mediaItems[currentIndex];
 
   return (
     <div
@@ -22,8 +22,8 @@ const Beeper = forwardRef(({ onClick, className = '', style = {} }, ref) => {
       className={`beeper desk-item clickable ${className}`}
       onClick={onClick}
       style={{
-        width: 'clamp(45px, 5.5vw, 70px)',
-        height: 'clamp(72px, 9vw, 110px)',
+        width: 'clamp(90px, 11vw, 140px)',
+        height: 'clamp(144px, 18vw, 220px)',
         ...style
       }}
       aria-label="Open media gallery"
@@ -35,7 +35,7 @@ const Beeper = forwardRef(({ onClick, className = '', style = {} }, ref) => {
         xmlns="http://www.w3.org/2000/svg"
         style={{ width: '100%', height: '100%' }}
       >
-        {/* Drop shadow */}
+        {/* Definitions */}
         <defs>
           <filter id="beeperShadow" x="-20%" y="-20%" width="140%" height="140%">
             <feDropShadow dx="2" dy="2" stdDeviation="1" floodOpacity="0.3" />
@@ -49,6 +49,10 @@ const Beeper = forwardRef(({ onClick, className = '', style = {} }, ref) => {
             <stop offset="0%" stopColor="#0a1f0a" />
             <stop offset="100%" stopColor="#0d2a0d" />
           </linearGradient>
+          {/* Clip path for screen content */}
+          <clipPath id="screenClip">
+            <rect x="11" y="18" width="28" height="18" rx="1" />
+          </clipPath>
         </defs>
 
         {/* Antenna */}
@@ -114,8 +118,42 @@ const Beeper = forwardRef(({ onClick, className = '', style = {} }, ref) => {
           className="beeper-screen"
         />
 
+        {/* Slideshow image */}
+        <image
+          key={currentIndex}
+          href={currentItem.src}
+          x="5"
+          y="14"
+          width="40"
+          height="26"
+          preserveAspectRatio="xMidYMid slice"
+          clipPath="url(#screenClip)"
+          className="beeper-slideshow"
+        />
+
+        {/* Green LCD overlay for retro effect */}
+        <rect
+          x="11"
+          y="18"
+          width="28"
+          height="18"
+          rx="1"
+          fill="#33cc33"
+          opacity="0.15"
+        />
+
+        {/* Play icon for videos */}
+        {currentItem.type === 'video' && (
+          <polygon
+            points="22,24 22,30 28,27"
+            fill="#33cc33"
+            opacity="0.9"
+            className="beeper-play-icon"
+          />
+        )}
+
         {/* Scanlines effect */}
-        <g className="beeper-scanlines" opacity="0.1">
+        <g className="beeper-scanlines" opacity="0.08">
           {[0, 2, 4, 6, 8, 10, 12, 14, 16].map(y => (
             <line
               key={y}
@@ -129,29 +167,15 @@ const Beeper = forwardRef(({ onClick, className = '', style = {} }, ref) => {
           ))}
         </g>
 
-        {/* Screen text */}
-        <text
-          x="25"
-          y="29"
-          textAnchor="middle"
-          className="beeper-screen-text"
-          fontSize="7"
-          fontFamily="monospace"
-          fill="#33cc33"
-          fontWeight="bold"
-        >
-          {displayText}
-        </text>
-
         {/* Screen reflection */}
         <rect
           x="11"
           y="18"
           width="28"
-          height="6"
+          height="5"
           rx="1"
           fill="white"
-          opacity="0.05"
+          opacity="0.03"
         />
 
         {/* Speaker grille */}
