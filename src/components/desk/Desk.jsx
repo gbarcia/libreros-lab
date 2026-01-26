@@ -61,7 +61,7 @@ const positions = {
     // FRONT ROW (3-15% from bottom) - Clear gap from mid row
     petriDish: { bottom: '6%', left: '5%', zIndex: 1, transform: 'rotate(12deg)' },
     coffeeCup: { bottom: '42%', left: '38%', zIndex: 2 },
-    beeper: { bottom: '44%', left: '28%', zIndex: 3, transform: 'rotate(-5deg)' },
+    beeper: { bottom: '44%', left: '28%', zIndex: 6, transform: 'rotate(-5deg)' },
 
     // Scattered papers beneath folder and notebook
     scatteredPapers: { top: '12%', left: '0%', zIndex: 2 },
