@@ -77,6 +77,9 @@ function MediaGallery({
             key={currentItem.id}
             src={currentItem.src}
             controls
+            autoPlay
+            muted
+            loop
             className="media-video"
             playsInline
           >
