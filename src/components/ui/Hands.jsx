@@ -2,7 +2,7 @@ import { forwardRef, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 // Hands component using PNG image
-const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
+const Hands = forwardRef(({ className = '', targetPosition = null, onClick = null, trackingState = '' }, ref) => {
   const handsRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -67,7 +67,10 @@ const Hands = forwardRef(({ className = '', targetPosition = null }, ref) => {
           else ref.current = el;
         }
       }}
-      className={`hands-container ${className}`}
+      className={`hands-container ${className} ${onClick ? 'hand-tracking-enabled' : ''} ${trackingState ? `tracking-${trackingState}` : ''}`}
+      onClick={onClick}
+      role={onClick ? 'button' : undefined}
+      tabIndex={onClick ? 0 : undefined}
     >
       <img
         ref={handsRef}

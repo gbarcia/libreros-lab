@@ -1,0 +1,154 @@
+/* ============================================
+   WATER RIPPLE OVERLAY
+   ============================================ */
+
+/* Canvas overlay — covers entire desk */
+.water-ripple-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99; /* Below hands (z:100), above desk items */
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.water-ripple-canvas.active {
+  opacity: 1;
+}
+
+/* ============================================
+   HANDS — WATER MODE ACTIVATION
+   ============================================ */
+
+/* Enable clicks on hands image (parent has pointer-events: none) */
+.hands-container.hand-tracking-enabled .hands-image {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Blue/aqua glow when water mode is active */
+.hands-container.tracking-active .hands-image {
+  filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, 0.3))
+    drop-shadow(0 0 12px rgba(74, 144, 226, 0.4));
+  transition: filter 0.4s ease;
+}
+
+/* Loading state */
+.hands-container.tracking-loading .hands-image {
+  cursor: wait;
+}
+
+/* ============================================
+   CAMERA PIP (Picture-in-Picture)
+   ============================================ */
+
+.water-tracking-pip {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: 120px;
+  height: 90px;
+  border: 2px solid rgba(74, 144, 226, 0.6);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 200;
+  opacity: 0.7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease;
+}
+
+.water-tracking-pip:hover {
+  opacity: 1;
+}
+
+.water-tracking-pip video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* Mirror for natural feel */
+}
+
+/* Hidden video element for MediaPipe processing */
+.water-tracking-video-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ============================================
+   ERROR TOAST
+   ============================================ */
+
+.water-tracking-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(194, 59, 34, 0.95);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: toastSlideIn 0.3s ease;
+}
+
+.water-tracking-toast button {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.water-tracking-toast button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — Hide on mobile/tablet
+   ============================================ */
+
+@media (max-width: 1023px) {
+  .water-ripple-canvas,
+  .water-tracking-pip,
+  .water-tracking-toast {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .water-ripple-canvas {
+    transition: none;
+  }
+  .water-tracking-toast {
+    animation: none;
+  }
+}

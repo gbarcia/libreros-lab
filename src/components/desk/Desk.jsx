@@ -1,4 +1,4 @@
-import { forwardRef, useState, useCallback } from 'react';
+import { forwardRef, useState, useCallback, useRef } from 'react';
 import Folder from './Folder';
 import Terminal from './Terminal';
 import Notebook from './Notebook';
@@ -16,6 +16,7 @@ import ContactPapers from './ContactPapers';
 import LabPapers from './LabPapers';
 import MicroscopePapers from './MicroscopePapers';
 import Hands from '../ui/Hands';
+import WaterRippleOverlay from '../ui/WaterRippleOverlay';
 
 /*
  * DESK LAYOUT - COLLISION-FREE GRID
@@ -103,6 +104,16 @@ const Desk = forwardRef(({
   className = ''
 }, ref) => {
   const [handTarget, setHandTarget] = useState(null);
+  const [trackingActive, setTrackingActive] = useState(false);
+  const deskInternalRef = useRef(null);
+
+  const handleTrackingToggle = useCallback(() => {
+    if (!isMobile) {
+      setTrackingActive(prev => !prev);
+    }
+  }, [isMobile]);
+
+  const trackingState = trackingActive ? 'active' : '';
 
   const getPos = (element) => {
     if (isMobile) return positions.mobile[element] || null;
@@ -132,7 +143,13 @@ const Desk = forwardRef(({
 
   return (
     <div
-      ref={ref}
+      ref={(el) => {
+        deskInternalRef.current = el;
+        if (ref) {
+          if (typeof ref === 'function') ref(el);
+          else ref.current = el;
+        }
+      }}
       className={`desk ${className}`}
     >
       {/* Scattered papers - behind folder and notebook */}
@@ -228,7 +245,18 @@ const Desk = forwardRef(({
       {!isMobile && !isTablet && <div className="desk-mat" />}
 
       {/* Hands - desktop and mobile (static on mobile) */}
-      {!isTablet && <Hands targetPosition={isMobile ? null : handTarget} />}
+      {!isTablet && (
+        <Hands
+          targetPosition={isMobile ? null : handTarget}
+          onClick={!isMobile ? handleTrackingToggle : null}
+          trackingState={trackingState}
+        />
+      )}
+
+      {/* Water ripple overlay - desktop only */}
+      {!isMobile && !isTablet && (
+        <WaterRippleOverlay deskRef={deskInternalRef} isActive={trackingActive} />
+      )}
     </div>
   );
 });
