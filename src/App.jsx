@@ -28,6 +28,7 @@ import './styles/sections.css';
 import './styles/responsive.css';
 import './styles/radio.css';
 import './styles/terminal-chat.css';
+import './styles/hand-tracking.css';
 
 function App() {
   const { isMobile, isTablet } = useResponsive();
