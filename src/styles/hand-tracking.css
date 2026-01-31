@@ -1,11 +1,12 @@
 /* ===== Hand Tracking Overlay ===== */
 
-/* Hands container states */
-.hands-container.hand-tracking-enabled {
+/* Hands container states - override pointer-events: none from desk.css */
+.hands-container.hand-tracking-enabled .hands-image {
+  pointer-events: auto;
   cursor: pointer;
 }
 
-.hands-container.tracking-active {
+.hands-container.tracking-active .hands-image {
   cursor: default;
 }
 
